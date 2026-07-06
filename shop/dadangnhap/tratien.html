@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--chinh cho dine thoai nho hon 600-->
+        <meta name="viewport" content="width=device, initial-scale=1.0">
+        <title>vku pet shop  </title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+<link rel="stylesheet" href="css/mainstyle.css">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://kit.fontawesome.com/54f0cb7e4a.js" crossorigin="anonymous"></script>
+    </head>
+   
+<body>
+    <div class="header">
+
+    
+    <div class="giohang">
+        <div class="navbar"> <!-- thanh bang chon-->
+            <div class="logo">
+                <img src="./anh/anh logo.png" width="125px">
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="./index.html">Home</a> </li>
+                    <li><a href="./mua hang.html">Hàng hóa</a> </li>
+                    <li><a href="http://localhost/kiemsoathang/">Quản lý hàng hóa</a> </li>
+                    <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
+                    <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
+                </ul>
+            </nav>
+            <img src="./anh/shop.png" width="30px" height="30px">
+            <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
+        </div>
+        
+    </div>
+  
+
+
+    <section class="payment">
+        <div class="container">
+            <div class="payment-top-wrap">
+                <div class="payment-top">
+                    <div class="delivery-top-delivery payment-top-item">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="delivery-top-adress payment-top-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="delivery-top-payment payment-top-item">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="payment-content row">
+                <div class="payment-content-left">
+                    <div class="payment-content-left-method-delivery">
+                        <p style="font-weight: bold;">Phương thức giao hàng</p> <br>
+                        <div class="payment-content-left-method-delivery-item">
+                            <input type="radio">
+                            <label for="">Giao hàng chuyển phát nhanh</label>
+                        </div>
+                    </div>
+                    <div class="payment-content-left-method-payment">
+                        <p style="font-weight: bold;">Phương thức thanh toán</p> <br>
+                        <p>Mọi giao dịch đều được bảo mật và mã hóa. Thông tin thẻ tín dụng sẽ không bao giờ được lưu
+                            lại.</p> <br>
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio">
+                            <label for="">Thanh toán bằng thẻ tín dụng(OnePay)</label>
+                        </div>
+                        <div class="payment-content-left-method-payment-item-img">
+                            <img src="./anh/visa.png" alt="">
+                        </div>
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio">
+                            <label for="">Thanh toán bằng thẻ ATM(OnePay)</label>
+                        </div>
+                        <div class="payment-content-left-method-payment-item-img">
+                            <img src="./anh/vcb.png" alt="">
+                        </div>
+                        <div class="payment-content-left-method-payment-item">
+                            <input name="method-payment" type="radio">
+                            <label for="">Thanh toán Momo</label>
+                        </div>
+                        <div class="payment-content-left-method-payment-item-img">
+                            <img src="./anh/momo.png" alt="">
+                        </div>
+                        <div class="payment-content-left-method-payment-item">
+                            <input checked name="method-payment" type="radio">
+                            <label for="">Thu tiền tận nơi</label>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="payment-content-right">
+                    <div class="payment-content-right-button">
+                        <input type="text" placeholder="Mã giảm giá/Quà tặng">
+                        <button><i class="fas fa-check"></i></button>
+                    </div>
+                    <div class="payment-content-right-button">
+                        <input type="text" placeholder="Mã cộng tác viên">
+                        <button><i class="fas fa-check"></i></button>
+                    </div>
+                    <div class="payment-content-right-mnv">
+                        <select name="" id="">
+                            <option value="">Chọn mã nhân viên thân thiết</option>
+                            <option value="">D345</option>
+                            <option value="">C333</option>
+                            <option value="">T567</option>
+                            <option value="">D333</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="payment-content-right-payment">
+                <button><a href="./camonmuahang.html">HOÀN THÀNH</a></button>
+            </div>
+        </div>
+
+    </section>
+
+
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Tải ứng dụng ngay!</h3>
+                <p>Tải ứng dụng về android và ios cho điện thoại.</p>
+                <div class="app-logo">
+                    <img src="./anh/pngwing.com (1).png">
+                    <img src="./anh/pngwing.com (2).png">
+                </div>
+            </div>
+            <div class="footer-col-2">
+                <img src="./anh/anh logo.png">
+                <p>Chúng tôi luôn vì hạnh phúc mọi người.</p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Link bổ ích</h3>
+               <ul>
+                <li>Phiếu mua hàng</li>
+                <li>Chính sách hoàn trả</li>
+                <li>Tham gia tiếp thị</li>
+               </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Theo dõi chúng tôi</h3>
+               <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>instagram</li>
+               </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">&copy;Copyright 2023 - VKU-er</p>
+    </div>
+</div>
+
+<!---hieu ung cho menu-->
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle(){
+    
+        if(MenuItems.style.maxHeight=="0px")
+    {
+        MenuItems.style.maxHeight = "200px";
+    }
+    else
+    {
+        MenuItems.style.maxHeight="0px";
+    }
+    }
+</script>
+</body>
+</div>
+</body>
+</html>

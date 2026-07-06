@@ -1,0 +1,369 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar{ 
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
+nav{
+    flex: 1;
+    text-align:right ;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+}
+
+
+nav ul li{
+    display: inline-block;
+    margin-right: 20px ;
+}
+
+a{
+    text-decoration: none;
+    color: blue;
+}
+p{
+    color: red;
+}
+.giohang{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.row
+{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.row1
+{
+    display: flex; /* Kích hoạt flexbox cho phần tử chứa */
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+}
+.col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+}
+.col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+}
+/*nut bam */
+.btn{
+    display: inline-block;
+    background: rgb(255, 149, 0);
+    color: blue;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+.btn:hover{
+  background: red;  
+}
+
+.btn1{
+    display: inline-block;
+    background: rgb(4, 185, 236);
+    color: rgb(212, 255, 0);
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+}
+.btn1:hover{
+  background: rgb(43, 0, 255);  
+}
+
+
+.header{
+    background: radial-gradient(rgb(232, 242, 170),white);
+}
+
+.header .row{
+ margin-top: 70px;
+}
+
+.categories{
+    margin: 70px 0;
+}
+.col-3{
+    flex-basis: 30%;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+.col-3 img{
+    width: 100%;
+}
+
+.small-contaianer{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    
+    transition: transform 0.5s;
+}
+.col-10{
+    flex-basis: 25%;
+    padding: 10px;
+    
+    margin-bottom: 50px;
+    
+    
+}
+.col-10 img{
+    width: 200%;
+}
+.col-4 img{
+    width: 250px;
+    height: 250px;
+}
+.title{
+    text-align: center;
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 60px;
+    color: blue;
+}
+.title::after{
+    content:  '';
+    background: red;
+    width:80px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom:0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+h4{
+    color: blue;
+    font-weight: normal;
+}
+.col-4{
+    font-size: 14px;
+
+}
+.col-4:hover{
+    transform: translateY(-5px);
+}
+/*offer  */
+.offer{
+    background: radial-gradient(white,rgb(80, 153, 237));
+    margin-top: 80px;
+    padding: 30px 0;
+}
+.netchu{
+    color: yellow;
+}
+.chunho{
+    color: blue;
+}
+.col-2 .offer-img{
+    padding: #fff
+}
+/*danh gia*/
+.testimonial{
+    padding-top: 100px;
+}
+.testimonial .col-3{
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0,5s;
+}
+.testimonial .col-3 img{
+    width:50px ;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+.testimonial .col-3:hover{
+    transform: translateY(-10px);
+}
+.col-3 p{
+    font-size: 12px;
+    margin: 12px 0;
+    color: #777;
+}
+.testimonial .col-3 .h3{
+  font-weight: 600;
+  color:#555;
+  font-size: 16px;  
+}
+.loai{
+    margin: 100px auto;
+}
+.col-5{
+    width: 160px;
+}
+.col-5 img{
+    width: 100%;
+    cursor: pointer;
+    filter: grayscale(100%);
+}
+/*khi cham vao*/
+.col-5 img:hover{
+filter: grayscale(0);
+}
+.footer{
+    background: #dddff3;
+    color: #544848;
+    font-size: 14px;
+    padding: 60px 0 20px;
+}
+.footer p{
+    color: #f10c0c;
+}
+.footer h3{
+    color: #000000;
+    margin-bottom: 20px;
+}
+.footer-col-1,.footer-col-2,.footer-col-3,.footer-col-4{
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+.footer-col-1{
+    flex-basis: 30%;
+}
+.footer-col-2{
+    flex: 1;
+    text-align: center;
+}
+.footer-col-2 img{
+    width: 180px;
+    margin-bottom: 20px;
+}
+.footer-col-3,.footer-col-4{
+    flex-basis: 12%;
+    text-align: center;
+}
+.ul{
+    list-style-type: none;
+}
+.app-logo{
+    margin-top: 20px;
+}
+.app-logo img{
+    width: 140px;
+}
+.footer hr{
+    border: none;
+    background: #2b00ff;
+    height: 2px;
+    margin: 20px 0;
+}
+.copyright{
+    text-align: center;
+}
+
+
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+}
+
+.benphai
+{
+    padding-bottom: 90%;
+  padding-left: 70%;
+}
+
+
+/*bo loc*/
+.cartegory-boloc{
+    flex: 1;
+    padding-left: 80%;
+}
+/*giao dien nut bo loc*/
+.cartegory-boloc select{
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #292828;
+    cursor: pointer;
+}
+
+.sotrang {
+justify-content: space-between;
+padding-left: 80%;
+
+}
+.sotrang p{
+    font-family: var(--main-text-font);
+    font-size: 11px;
+}
+
+/*hieu ung cho menu*/
+@media only screen and (max-width: 800px)
+{
+  nav ul{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    background: #c3f303;
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.5s;
+
+  }  
+  nav ul li{
+    display: block;
+    margin-right: 50px;
+    margin-top: 10px;
+    margin-bottom: 10PX;
+
+  }
+
+  nav ul li{
+    color:white ;
+  }
+  .menu-icon{
+    display: block;
+    cursor:pointer ;
+  }
+}
+/*chinh cho man hinh nho hon 600*/
+@media only screen and (max-width: 600px)
+{
+.row{
+    text-align: center;
+}
+.col-2,.col-3,.col-4{
+    flex-basis: 100%;
+}
+}
