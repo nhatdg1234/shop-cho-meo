@@ -1,17 +1,18 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="vi">
     <head>
         
         <meta charset="utf-8">
         <link rel="icon" href="./anh/anh dai dien trang.png" type="image/x-icon">
         <!--chinh cho dine thoai nho hon 600-->
-        <meta name="viewport" content="width=device, initial-scale=1.0">
-        <title>vku pet shop  </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VKU Pet Shop</title>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
     </head>
    
 <body>
@@ -53,51 +54,47 @@
 
 
 
-    <div class="left-menu">
-        <ul>
-            <li>Chó
+<div class="page-layout">
+    <aside class="left-menu" aria-label="Danh mục sản phẩm">
+        <div class="left-menu__header"><i class="fa-solid fa-paw"></i> Danh mục</div>
+        <ul class="left-menu__list">
+            <li class="menu-parent">
+                <button type="button" class="menu-parent__title" aria-expanded="false">
+                    <i class="fa-solid fa-dog fa-icon"></i>
+                    Chó
+                    <i class="fa-solid fa-chevron-down fa-chevron"></i>
+                </button>
                 <ul class="left-menu-item">
-                    <li>
-                        <a href="cartegory.html">Giống mới về</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Giống lớn</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Chó Shiba</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Chó phoc</a>
-                    </li>
+                    <li><a href="cartegory.html">Giống mới về</a></li>
+                    <li><a href="cartegory.html">Giống lớn</a></li>
+                    <li><a href="cartegory.html">Chó Shiba</a></li>
+                    <li><a href="cartegory.html">Chó phoc</a></li>
                 </ul>
             </li>
-            <li>Mèo
+            <li class="menu-parent">
+                <button type="button" class="menu-parent__title" aria-expanded="false">
+                    <i class="fa-solid fa-cat fa-icon"></i>
+                    Mèo
+                    <i class="fa-solid fa-chevron-down fa-chevron"></i>
+                </button>
                 <ul class="left-menu-item">
-                    <li>
-                        <a href="cartegory.html">Giống mới về</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Mèo đen</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Mèo lai</a>
-                    </li>
-                    <li>
-                        <a href="cartegory.html">Mèo nước ngoài</a>
-                    </li>
+                    <li><a href="cartegory.html">Giống mới về</a></li>
+                    <li><a href="cartegory.html">Mèo đen</a></li>
+                    <li><a href="cartegory.html">Mèo lai</a></li>
+                    <li><a href="cartegory.html">Mèo nước ngoài</a></li>
                 </ul>
             </li>
-            <li>Vật nuôi đang lớn</li>
-            <li>Flast sale</li>
-            <li>Hot pet</li>
-            <li>Bộ sưu tập</li>
-            <li>Thức ăn</li>
-            <li>Vật dụng nuôi</li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-seedling"></i> Vật nuôi đang lớn</a></li>
+            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-bolt"></i> Flash sale</a></li>
+            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-fire"></i> Hot pet</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-layer-group"></i> Bộ sưu tập</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-bowl-food"></i> Thức ăn</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-suitcase-medical"></i> Vật dụng nuôi</a></li>
         </ul>
-    </div>
+    </aside>
 
-
-<div class="categories">
+    <div class="content-area">
+        <div class="categories">
     <div class="small-contaianer">
         <div class="row">
             <div class="col-3">
@@ -273,37 +270,7 @@
     </div>
 </div>
 
-<!---hieu ung cho menu-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    $(window).scroll(function() {
-        var targetOffset = $("#sanphammoi").offset().top;
-        if ($(window).scrollTop() >= targetOffset) {
-            $('.left-menu').css('position', 'static');
-        } else {
-            $('.left-menu').css('position', 'sticky');
-        }
-    });
-    </script>
+<script src="sidebar.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-
-$(window).scroll(function() {
-    var targetOffset = $("#sanphammoi").offset().top;
-    if ($(window).scrollTop() > targetOffset) {
-        $('.left-menu').css('position', 'relative');
-    } else {
-        $('.left-menu').css('position', 'sticky');
-    }
-});
-
-
-
-
-
-</script>
-
-</body>
-</div>
 </body>
 </html>
