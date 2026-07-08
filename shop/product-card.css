@@ -11,10 +11,8 @@
   --badge-new:#C1512E;
 }
 *{box-sizing:border-box;}
-body{
-  margin:0;
+.product-card-area{
   background:var(--page-bg);
-  font-family:'Nunito', sans-serif;
   padding:40px 16px;
 }
 .grid{
