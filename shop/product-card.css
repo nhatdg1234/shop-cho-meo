@@ -1,0 +1,208 @@
+:root{
+  --page-bg:#F3ECE1;
+  --card-bg:#FFFDF7;
+  --ink:#2B2318;
+  --ink-soft:#8A8375;
+  --gold:#E8A93A;
+  --price-old:#B3AA98;
+  --btn:#2E3A1F;
+  --btn-hover:#1F2815;
+  --badge-best:#3B4A2C;
+  --badge-new:#C1512E;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--page-bg);
+  font-family:'Nunito', sans-serif;
+  padding:40px 16px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:24px;
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* ============ PRODUCT CARD ============ */
+.product-card{
+  background:var(--card-bg);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius:24px;
+  box-shadow:0 10px 26px rgba(60,45,20,0.08);
+}
+
+.product-card__media{
+  position:relative;
+  width:100%;
+  aspect-ratio: 4 / 3;
+  overflow:hidden;
+  background:#eee;
+}
+.product-card__media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.product-card__badge{
+  position:absolute;
+  top:16px;
+  left:16px;
+  padding:6px 14px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  color:#fff;
+  background:var(--badge-best);
+  border-radius:20px;
+}
+.product-card__badge.new{ background:var(--badge-new); }
+
+.product-card__fav{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.92);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  border:none;
+  font-size:16px;
+  color:var(--ink-soft);
+  box-shadow:0 3px 10px rgba(0,0,0,0.12);
+  transition:transform .15s ease, background .15s ease, color .15s ease;
+}
+.product-card__fav:hover{ background:#fff; transform:scale(1.08); }
+.product-card__fav.active{ color:#E8557A; }
+
+.product-card__body{
+  padding:22px 24px 24px;
+}
+.product-card__brand{
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:8px;
+}
+.product-card__title{
+  font-family:'Playfair Display', serif;
+  font-size:19px;
+  font-weight:700;
+  color:var(--ink);
+  margin:0 0 14px;
+  line-height:1.3;
+}
+
+.product-card__price{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:18px;
+}
+.product-card__price-current{
+  font-size:19px;
+  font-weight:800;
+  color:var(--ink);
+}
+.product-card__price-old{
+  font-size:14px;
+  color:var(--price-old);
+  text-decoration:line-through;
+}
+
+.product-card__btn{
+  width:100%;
+  padding:15px 0;
+  background:linear-gradient(90deg, #F0879C 0%, #F5A65B 100%);
+  color:#fff;
+  border:none;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.2px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  transition:filter .2s ease, transform .12s ease;
+}
+.product-card__btn:hover{ filter:brightness(1.05); }
+.product-card__btn:active{ transform:scale(.98); }
+.product-card__btn.added{ background:linear-gradient(90deg, #8FCB8A, #6FB86A); }
+
+
+/* ============ HEADER GIỎ HÀNG (demo) ============ */
+.demo-topbar{
+  max-width:1100px;
+  margin:0 auto 24px;
+  display:flex;
+  justify-content:flex-end;
+}
+.cart-icon{
+  position:relative;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:transform .18s ease;
+}
+.cart-icon__badge{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  min-width:20px;
+  height:20px;
+  padding:0 5px;
+  border-radius:10px;
+  background:var(--badge-new);
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:scale(0);
+  transition:transform .2s ease;
+}
+.cart-icon__badge.show{ transform:scale(1); }
+
+/* toast thông báo nhỏ khi Add to Cart */
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--ink);
+  color:#fff;
+  padding:12px 22px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+  z-index:50;
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}

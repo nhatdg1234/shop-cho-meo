@@ -3,15 +3,16 @@
     <head>
         <meta charset="utf-8">
         <!--chinh cho dine thoai nho hon 600-->
-        <meta name="viewport" content="width=device, initial-scale=1.0">
-        <title>vku pet shop  </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VKU Pet Shop</title>
         <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
-<link rel="stylesheet" href="css/mainstyle.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
+        <link rel="stylesheet" href="css/mainstyle.css">
+        <link rel="stylesheet" href="product-card.css">
     </head>
    
 <body>
@@ -92,81 +93,65 @@
 <br>
 
 
-        <h2 class="title"></h2>
-        <div class="row">
-            <div class="col-4">
-                <a href="./giaodienhangcorgi.html"><img src="./anh/cho1.jpg" ></a>
-              <h4>Chó corgi</h4>
-              <div class="rating">
-              </div>
-              <p>500.000vnd</p>
-            </div>
-            <div class="col-4">
-                <a href="./giaodiencho2.html"><img src="./anh/cho2.jpg"></a>
-                <h4>Chó lông xù trắng</h4>
-                <div class="rating">
-                </div>
-                <p>400.000vnd</p>
-              </div>
-              <div class="col-4">
-                <a href="./giaodiencho3.html"><img src="./anh/cho3.jpg"></a>
-                <h4>Chó alaska</h4>
-                <div class="rating">
-                </div>
-                <p>300.000vnd</p>
-              </div>
-              <div class="col-4">
-                <a href="./giaodiencho4.html"><img src="./anh/cho4.jpg"></a>
-                <h4>Chó vàng</h4>
-                <div class="rating">
-                </div>
-                <p>800.000vnd</p>
-              </div>
-        </div>
-        <h2 class="title"></h2>
-        <div class="row">
-            <div class="col-4">
-                <a href="./shibaden.html"> <img src="./anh/shibaden.jpg"></a>
-              <h4>Chó shiba đen</h4>
-              <div class="rating">
-              </div>
-              <p>500.000vnd</p>
-            </div>
-            <div class="col-4">
-                <a href="./shibanau.html"> <img src="./anh/shibanau.jpg"></a>
-                <h4>Chó shiba nâu</h4>
-                <div class="rating">
-                </div>
-                <p>500.000vnd</p>
-              </div>
-              <div class="col-4">
-                <a href="./shibatrang.html">  <img src="./anh/shibatrang.jpg"></a>
-                <h4>Chó shiba trắng</h4>
-                <div class="rating">
-                </div>
-                <p>500.000vnd</p>
-              </div>
-              <div class="col-4">
-                <a href="./shibavang.html">  <img src="./anh/shibavang.jpg"></a>
-                <h4>Chó shiba vàng</h4>
-                <div class="rating">
-                </div>
-                <p>500.000vnd</p>
-              </div>
+        <div class="demo-topbar">
+          <div class="cart-icon" id="cartIcon">
+            🛍️
+            <span class="cart-icon__badge" id="cartBadge">0</span>
+          </div>
         </div>
 
-        <div class="cartegory-right-bottom row">
-            <div class="cartegory-right-bottom-items">
-                <p>Hiển thị 1 <span>&#124;</span> 4 sản phẩm</p>
-            </div>
-            <div class="cartegory-right-bottom-items">
-                <p><span><a href="./mua hang.html">&#171;</a></span><a href="./mua hang.html">1</a> <a href="./mua hang2.html">2</a> <a href="./mua hang3.html">3</a> <a href="./mua hang4.html">4</a> <span><a href="">&#187;</a></span> <a href="./mua hang4.html">Trang cuối</a></p>
-            </div>
-        </div>
+        <div class="toast" id="toast"></div>
 
-        
-    </div>
+        <div class="grid">
+          <article class="product-card" data-id="kibble-pawnourish" data-name="Premium Grain-Free Kibble" data-price="42.99">
+            <div class="product-card__media">
+              <span class="product-card__badge">Bestseller</span>
+              <button class="product-card__fav" aria-label="Yêu thích">♥</button>
+              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600" alt="Vòng cổ chó">
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__brand">Pawnourish</div>
+              <h3 class="product-card__title">Premium Grain-Free Kibble</h3>
+              <div class="product-card__price">
+                <span class="product-card__price-current">$42.99</span>
+                <span class="product-card__price-old">$54.00</span>
+              </div>
+              <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-id="bed-dreampaws" data-name="Orthopedic Memory Foam Bed" data-price="89.00">
+            <div class="product-card__media">
+              <span class="product-card__badge new">New</span>
+              <button class="product-card__fav" aria-label="Yêu thích">♥</button>
+              <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=600" alt="Chó lông xù">
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__brand">Dreampaws</div>
+              <h3 class="product-card__title">Orthopedic Memory Foam Bed</h3>
+              <div class="product-card__price">
+                <span class="product-card__price-current">$89.00</span>
+              </div>
+              <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="product-card" data-id="cho-corgi" data-name="Chó Corgi" data-price="500000">
+            <div class="product-card__media">
+              <button class="product-card__fav active" aria-label="Yêu thích">♥</button>
+              <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" alt="Chó Corgi">
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__brand">VKU Pet Shop</div>
+              <h3 class="product-card__title">Chó Corgi thuần chủng</h3>
+              <div class="product-card__price">
+                <span class="product-card__price-current">500.000đ</span>
+              </div>
+              <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
+            </div>
+          </article>
         </div>
+      </div>
     </div>
 
           <!-- KHUYEN NGHI--->
@@ -212,6 +197,7 @@
     </div>
 </div>
 <!---phan cuoi-->
+<script src="product-card.js"></script>
 
 
 <div class="footer">
