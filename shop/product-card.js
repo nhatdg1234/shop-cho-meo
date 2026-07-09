@@ -53,6 +53,7 @@ function updateCartBadge(){
   const cart = getCart();
   const qty = cartTotalQty(cart);
   const badge = document.getElementById('cartBadge');
+  if (!badge) return;
   badge.textContent = qty;
   badge.classList.toggle('show', qty > 0);
 }
@@ -73,7 +74,7 @@ function addToCart(card, btn){
   showToast('Đã thêm "' + name + '" vào giỏ hàng');
 
   const originalHTML = btn.innerHTML;
-  btn.innerHTML = '<span class="btn-icon">✓</span> Đã thêm';
+  btn.innerHTML = '<span class="btn-icon">✓</span> Đã thêm <span class="close-x" aria-hidden="true">×</span>';
   btn.classList.add('added');
   btn.disabled = true;
   setTimeout(function(){
@@ -83,8 +84,10 @@ function addToCart(card, btn){
   }, 1200);
 
   const cartIcon = document.getElementById('cartIcon');
-  cartIcon.style.transform = 'scale(1.15)';
-  setTimeout(function(){ cartIcon.style.transform = 'scale(1)'; }, 180);
+  if (cartIcon) {
+    cartIcon.style.transform = 'scale(1.15)';
+    setTimeout(function(){ cartIcon.style.transform = 'scale(1)'; }, 180);
+  }
 }
 
 function initAddToCart(){

@@ -85,6 +85,9 @@
 
 .product-card__body{
   padding:22px 24px 24px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
 }
 .product-card__brand{
   font-size:11.5px;
@@ -107,6 +110,7 @@
   display:flex;
   align-items:baseline;
   gap:10px;
+  margin-top:auto;
   margin-bottom:18px;
 }
 .product-card__price-current{
@@ -139,7 +143,23 @@
 }
 .product-card__btn:hover{ filter:brightness(1.05); }
 .product-card__btn:active{ transform:scale(.98); }
-.product-card__btn.added{ background:linear-gradient(90deg, #8FCB8A, #6FB86A); }
+.product-card__btn.added{
+  background:linear-gradient(90deg, #4CAF50, #2E8B57);
+  position:relative;
+}
+.product-card__btn.added .close-x{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:18px;
+  height:18px;
+  margin-left:4px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  font-size:12px;
+  line-height:1;
+  font-weight:800;
+}
 
 
 /* ============ HEADER GIỎ HÀNG (demo) ============ */
