@@ -33,7 +33,7 @@
                     <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
                 </ul>
             </nav>
-            <img src="./anh/shop.png" width="30px" height="30px">
+            <img src="./anh/shop.png" width="30px" height="30px" id="cartIcon" class="cart-icon">
             <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
         </div>
         <div class="row">
@@ -173,6 +173,9 @@
                         </div>
                     </article>
                 </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="./mua hang.html" class="btn">Khám phá thêm &#9755;</a>
+                </div>
             </div>
         <!-- KHUYEN NGHI--->
       <div class="offer">
@@ -267,6 +270,27 @@
         </div>
         <hr>
         <p class="copyright">&copy;Copyright 2023 - VKU-er</p>
+</div>
+</div>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer__header">
+        <h3>🛍️ Giỏ hàng của bạn</h3>
+        <button type="button" class="cart-drawer__close" id="closeCart">&times;</button>
+    </div>
+    
+    <div class="cart-drawer__content" id="cartDrawerContent">
+    </div>
+    
+    <div class="cart-drawer__footer">
+        <div class="cart-drawer__total">
+            <span>Tổng tiền:</span>
+            <span class="total-price" id="cartTotal">0đ</span>
+        </div>
+        <button type="button" class="btn-checkout">Thanh toán ngay</button>
+        <button type="button" class="btn-continue" id="continueShopping">Tiếp tục mua sắm</button>
     </div>
 </div>
 
