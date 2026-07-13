@@ -1,124 +1,251 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Thanh toán - VKU Pet Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="checkout-global.css">
-</head>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VKU Pet Shop - Thanh toán</title>
+        
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
+        <link rel="stylesheet" href="css/mainstyle.css">
+        
+        <link rel="stylesheet" href="checkout-global.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+   
 <body>
-    <header class="header-vku">
-        <div class="logo">VKU PET SHOP</div>
-        <nav class="nav-icons">
-            <span>Tìm kiếm</span>
-            <span>Yêu thích</span>
-            <span>Giỏ hàng (0)</span>
-        </nav>
-    </header>
+    <div class="header">
+        <div class="giohang">
+            <div class="navbar"> <div class="logo">
+                    <img src="./anh/anh_logo.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="./home.php">Home</a> </li>
+                        <li><a href="./mua_hang.php">Hàng hóa</a> </li>
+                        <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
+                        <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
+                    </ul>
+                </nav>
+                
+                <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
 
-    <div class="stepper-container">
-        <div class="step-item active"><div class="step-circle">1</div> Giỏ hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">2</div> Giao hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">3</div> Thanh toán</div>
-        <div class="step-line"></div>
-        <div class="step-item"><div class="step-circle">4</div> Hoàn tất</div>
+    <!-- Stepper -->
+    <div class="ui-card mb-8 flex justify-between items-center px-12 mt-8 max-w-6xl mx-auto">
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">1</div> Giỏ hàng</div>
+        <div class="flex-1 h-0.5 bg-orange-500 mx-4"></div>
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">2</div> Giao hàng</div>
+        <div class="flex-1 h-0.5 bg-orange-500 mx-4"></div>
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">3</div> Thanh toán</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">4</div> Hoàn tất</div>
     </div>
 
     <div class="checkout-wrapper">
         <div class="main-content">
-            <div class="ui-card">
-                <h3>Chọn phương thức thanh toán</h3>
-                <div class="payment-card" style="border: 2px solid #ff9800; border-radius: 12px; padding: 20px; background: white; position: relative;">
-                    <span class="badge" style="background: #8bc34a; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; position: absolute; top: 10px; right: 10px;">Khuyên dùng</span>
-                    <input type="radio" checked> <strong>Chuyển khoản VietQR</strong>
-                    <div class="qr-box" style="border: 2px dashed #ff9800; padding: 20px; border-radius: 12px; text-align: center; margin-top: 20px;">
-                        <img id="vietqr-image" src="" alt="QR Code Thanh toán" style="max-width: 200px;">
-                        <p style="color: #ff9800; font-weight: bold; margin-top: 10px;">Quét mã để thanh toán tự động</p>
+            <div class="col-span-1 lg:col-span-2 bg-white rounded-[24px] p-6 shadow-sm border border-orange-50 flex flex-col h-full relative">
+                
+                <div class="flex items-center mb-6">
+                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 mr-4 shrink-0">
+                        <i class="fa-regular fa-credit-card"></i>
                     </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-gray-800">Chọn phương thức thanh toán</h2>
+                        <p class="text-sm text-gray-500">Bạn muốn dùng phương thức nào để hoàn tất đơn hàng dễ thương này?</p>
+                    </div>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    
+                    <label class="block cursor-pointer relative">
+                        <input type="radio" name="payment_method" value="vietqr" class="peer hidden" checked>
+                        <div class="flex items-center p-4 border-2 rounded-xl transition-all peer-checked:border-orange-400 peer-checked:bg-orange-50 border-gray-100 bg-white">
+                            <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-4 peer-checked:border-orange-500 border-gray-300">
+                                <div class="w-2.5 h-2.5 rounded-full bg-orange-500 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mr-3 shrink-0"><i class="fa-solid fa-qrcode"></i></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">Quét mã VietQR</h4>
+                                <p class="text-xs text-gray-500">Nhanh chóng, chính xác - hỗ trợ mọi ngân hàng Việt Nam</p>
+                            </div>
+                            <span class="bg-teal-100 text-teal-700 text-[10px] font-bold px-2 py-1 rounded-md ml-2">Khuyên dùng</span>
+                        </div>
+                        
+                        <div class="hidden peer-checked:block mt-3 border-2 border-dashed border-orange-300 rounded-xl p-5 bg-white relative">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-orange-500 text-sm font-bold flex items-center gap-1">
+                                <i class="fa-solid fa-money-bill-transfer"></i> Chi tiết chuyển khoản
+                            </div>
+                            
+                            <div class="flex flex-col md:flex-row gap-6 items-center mt-2">
+                                <div class="w-40 h-40 shrink-0 bg-gray-50 rounded-lg p-2 border border-gray-100">
+                                    <img id="qr-image" src="" alt="Mã QR Thanh Toán" class="w-full h-full object-contain">
+                                </div>
+                                
+                                <div class="flex-1 w-full text-sm space-y-2">
+                                    <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                        <span class="text-gray-500">Ngân hàng</span>
+                                        <span class="font-bold text-gray-800">Vietcombank</span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                        <span class="text-gray-500">Số tài khoản</span>
+                                        <span class="font-bold text-gray-800 tracking-wider">1234 5678 9012</span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                        <span class="text-gray-500">Chủ tài khoản</span>
+                                        <span class="font-bold text-gray-800">VKU PET SHOP</span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                        <span class="text-gray-500">Số tiền</span>
+                                        <span class="font-bold text-orange-600 text-base" id="qr-amount-text">630.000đ</span>
+                                    </div>
+                                    <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                        <span class="text-gray-500">Nội dung</span>
+                                        <span class="font-bold text-gray-800">VKU #A1B2C3</span>
+                                    </div>
+                                    <div class="text-[11px] text-orange-500 bg-orange-50 p-2 rounded-md mt-2 flex items-start gap-1">
+                                        <i class="fa-solid fa-circle-exclamation mt-0.5"></i> Vui lòng chuyển đúng số tiền và nội dung để đơn hàng được xử lý tự động ⚡
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer relative">
+                        <input type="radio" name="payment_method" value="manual_bank" class="peer hidden">
+                        <div class="flex items-center p-4 border-2 border-gray-100 rounded-xl transition-all peer-checked:border-orange-400 peer-checked:bg-orange-50 bg-white">
+                             <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-4 peer-checked:border-orange-500 border-gray-300">
+                                <div class="w-2.5 h-2.5 rounded-full bg-orange-500 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                            <div class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mr-3 shrink-0"><i class="fa-solid fa-building-columns"></i></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">Chuyển khoản ngân hàng</h4>
+                                <p class="text-xs text-gray-500">Chuyển thủ công qua Internet Banking / Ứng dụng ngân hàng</p>
+                            </div>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer relative">
+                        <input type="radio" name="payment_method" value="ewallet" class="peer hidden">
+                        <div class="flex items-center p-4 border-2 border-gray-100 rounded-xl transition-all peer-checked:border-orange-400 peer-checked:bg-orange-50 bg-white">
+                             <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-4 peer-checked:border-orange-500 border-gray-300">
+                                <div class="w-2.5 h-2.5 rounded-full bg-orange-500 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                            <div class="w-10 h-10 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-center mr-3 shrink-0"><i class="fa-solid fa-wallet"></i></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">Ví điện tử</h4>
+                                <p class="text-xs text-gray-500">MoMo - ZaloPay - VNPay — thanh toán chỉ với 1 chạm</p>
+                            </div>
+                            <span class="bg-orange-100 text-orange-600 text-[10px] font-bold px-2 py-1 rounded-md ml-2">Hoàn tiền 2%</span>
+                        </div>
+                    </label>
+
+                    <label class="block cursor-pointer relative">
+                        <input type="radio" name="payment_method" value="cod" class="peer hidden">
+                        <div class="flex items-center p-4 border-2 border-gray-100 rounded-xl transition-all peer-checked:border-orange-400 peer-checked:bg-orange-50 bg-white">
+                             <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-4 peer-checked:border-orange-500 border-gray-300">
+                                <div class="w-2.5 h-2.5 rounded-full bg-orange-500 scale-0 peer-checked:scale-100 transition-transform"></div>
+                            </div>
+                            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mr-3 shrink-0"><i class="fa-solid fa-money-bill-wave"></i></div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-gray-800">Thanh toán khi nhận hàng (COD)</h4>
+                                <p class="text-xs text-gray-500">Nhận hàng — kiểm tra — thanh toán trực tiếp cho shipper</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="mt-auto pt-6 border-t border-gray-100 flex justify-between items-center">
+                    <a href="diachigiaohang.html" class="px-6 py-3 bg-orange-50 text-orange-600 font-bold rounded-xl hover:bg-orange-100 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Quay lại
+                    </a>
+                    <a href="camonmuahang.html" class="px-8 py-3 bg-orange-500 text-white font-bold rounded-xl shadow-[0_4px_12px_rgba(249,115,22,0.3)] hover:bg-orange-600 hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <i class="fa-regular fa-circle-check"></i> Xác nhận đặt hàng
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="sidebar-content shop-summary-box">
+
+        <div class="sidebar-content">
             <div class="ui-card">
-                <button type="button" id="btnConfirmOrder" class="btn-confirm" style="width: 100%; padding: 15px; background: linear-gradient(to right, #ff9800, #f57c00); color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 20px;">Xác nhận đặt hàng</button>
-                <a href="diachigiaohang.html" class="btn-back" style="display: block; text-align: center; margin-top: 15px; color: #ff9800; text-decoration: none; font-weight: bold;">Quay lại</a>
+                <h3 class="font-bold mb-4 flex items-center gap-2"><i class="fa fa-file-invoice"></i> Tóm tắt đơn hàng</h3>
+                <div id="sidebar-items-list" class="space-y-3 mb-4"></div>
+                <div class="mt-4 flex gap-2">
+                    <input type="text" placeholder="Mã giảm giá / voucher" class="border rounded-lg p-2 flex-1 text-sm">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium">Áp dụng</button>
+                </div>
+                <div class="mt-6 space-y-2">
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Tạm tính</span><span id="subTotal">0đ</span></div>
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Phí vận chuyển</span><span class="text-green-500">Miễn phí</span></div>
+                    <div class="flex justify-between text-xl font-bold pt-4 border-t">
+                        <span>Tổng cộng</span>
+                        <span class="text-orange-500" id="finalTotal">0đ</span>
+                    </div>
+                </div>
+                <div class="mt-6 p-3 bg-yellow-50 rounded-xl border border-yellow-100 flex gap-3 items-start">
+                    <i class="fa fa-shield-alt text-yellow-600 mt-1"></i>
+                    <p class="text-xs text-yellow-700">Đơn hàng của bạn được bảo mật tuyệt đối bởi VKU Security Engine</p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const btnConfirm = document.getElementById('btnConfirmOrder');
-            const qrImage = document.getElementById('vietqr-image');
-            
-            function renderOrderSummary() {
-                const cart = JSON.parse(localStorage.getItem('vku_cart')) || {};
-                const sidebarContent = document.querySelector('.shop-summary-box');
-                
-                let total = 0;
-                let htmlItems = '<h4>Tóm tắt đơn hàng</h4>';
+            const cart = JSON.parse(localStorage.getItem('vku_cart')) || {};
+            const sidebarItemsList = document.getElementById('sidebar-items-list');
+            const subTotalEl = document.getElementById('subTotal');
+            const finalTotalEl = document.getElementById('finalTotal');
+            let total = 0;
 
-                Object.values(cart).forEach(item => {
-                    total += item.price * item.qty;
-                    htmlItems += `
-                        <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size:14px;">
-                            <span>${item.name} (x${item.qty})</span>
-                            <span>${new Intl.NumberFormat('vi-VN').format(item.price * item.qty)}₫</span>
+            Object.keys(cart).forEach((id, index) => {
+                const item = cart[id];
+                total += item.price * item.qty;
+                const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
+                const pastelBg = index % 2 === 0 ? 'bg-[#FFE7E7]' : 'bg-[#FFF1B8]';
+                
+                sidebarItemsList.innerHTML += `
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-10 h-10 ${pastelBg} rounded-lg flex items-center justify-center p-1">
+                            <img src="${imgSrc}" class="max-w-full max-h-full object-contain rounded-sm">
+                            <span class="absolute -top-2 -left-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">${item.qty}</span>
                         </div>
-                    `;
-                });
-
-                htmlItems += `
-                    <hr style="border:none; border-top:1px dashed #ddd; margin:15px 0;">
-                    <div style="display:flex; justify-content:between; font-weight:bold; color:#e65100; font-size:16px; margin-bottom:15px;">
-                        <span>Tổng thanh toán:</span>
-                        <span style="margin-left:auto;">${new Intl.NumberFormat('vi-VN').format(total)}₫</span>
+                        <span class="text-gray-600 truncate w-32">${item.name}</span>
                     </div>
-                `;
-                
-                if(sidebarContent) {
-                    const itemsContainer = document.getElementById('sidebar-items-list') || document.createElement('div');
-                    itemsContainer.id = 'sidebar-items-list';
-                    itemsContainer.innerHTML = htmlItems;
-                    sidebarContent.insertBefore(itemsContainer, btnConfirm);
-                }
+                    <span class="font-medium">${new Intl.NumberFormat('vi-VN').format(item.price * item.qty)}đ</span>
+                </div>`;
+            });
+            
+            subTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
+            finalTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
+        });
+    </script>
 
-                return total;
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const totalAmount = 630000;
+            const bankId = '970436';
+            const accountNo = '123456789012';
+            const accountName = 'VKU PET SHOP';
+            const content = 'VKU A1B2C3';
+            
+            const qrApiUrl = `https://img.vietqr.io/image/${bankId}-${accountNo}-compact2.jpg?amount=${totalAmount}&addInfo=${encodeURIComponent(content)}&accountName=${encodeURIComponent(accountName)}`;
+            
+            const qrImage = document.getElementById('qr-image');
+            if(qrImage) {
+                qrImage.src = qrApiUrl;
             }
 
-            function renderVietQR(totalPrice) {
-                const tempOrderCode = 'VKU' + Date.now().toString().slice(-6);
-                if (qrImage && totalPrice > 0) {
-                    const accountName = encodeURIComponent('VKU PET SHOP');
-                    const addInfo = encodeURIComponent(tempOrderCode);
-                    qrImage.src = `https://img.vietqr.io/image/970436-123456789012-compact2.png?amount=${totalPrice}&addInfo=${addInfo}&accountName=${accountName}`;
-                }
-            }
-
-            const finalTotal = renderOrderSummary();
-            renderVietQR(finalTotal);
-
-            if(btnConfirm) {
-                btnConfirm.addEventListener('click', function() {
-                    const cart = JSON.parse(localStorage.getItem('vku_cart')) || {};
-                    const shipping = JSON.parse(localStorage.getItem('vku_shipping')) || {};
-                    fetch('checkout_api.php', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ cart: cart, shipping: shipping })
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if(data.success) {
-                            localStorage.removeItem('vku_cart');
-                            localStorage.removeItem('vku_shipping');
-                            localStorage.setItem('last_order_code', data.order_code);
-                            window.location.href = 'camonmuahang.html';
-                        }
-                    });
-                });
+            const qrAmountText = document.getElementById('qr-amount-text');
+            if(qrAmountText) {
+                qrAmountText.innerText = new Intl.NumberFormat('vi-VN').format(totalAmount) + 'đ';
             }
         });
     </script>

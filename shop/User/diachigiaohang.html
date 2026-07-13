@@ -1,147 +1,275 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin giao hàng - VKU Pet Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="checkout-global.css">
-</head>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VKU Pet Shop - Thông tin giao hàng</title>
+        
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
+        <link rel="stylesheet" href="css/mainstyle.css">
+        
+        <link rel="stylesheet" href="checkout-global.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+   
 <body>
-    <header class="header-vku">
-        <div class="logo">VKU PET SHOP</div>
-        <nav class="nav-icons">
-            <span>Tìm kiếm</span>
-            <span>Yêu thích</span>
-            <span>Giỏ hàng (0)</span>
-        </nav>
-    </header>
+    <div class="header">
+        <div class="giohang">
+            <div class="navbar"> <div class="logo">
+                    <img src="./anh/anh_logo.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="./home.php">Home</a> </li>
+                        <li><a href="./mua_hang.php">Hàng hóa</a> </li>
+                        <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
+                        <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
+                    </ul>
+                </nav>
+                
+                <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
 
-    <div class="stepper-container">
-        <div class="step-item active"><div class="step-circle">1</div> Giỏ hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">2</div> Giao hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item"><div class="step-circle">3</div> Thanh toán</div>
-        <div class="step-line"></div>
-        <div class="step-item"><div class="step-circle">4</div> Hoàn tất</div>
+    <!-- Stepper -->
+    <div class="ui-card mb-8 flex justify-between items-center px-12 mt-8 max-w-6xl mx-auto">
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">1</div> Giỏ hàng</div>
+        <div class="flex-1 h-0.5 bg-orange-500 mx-4"></div>
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">2</div> Giao hàng</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">3</div> Thanh toán</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">4</div> Hoàn tất</div>
     </div>
 
     <div class="checkout-wrapper">
         <div class="main-content">
             <div class="ui-card">
-                <h3>Thông tin giao hàng</h3>
-                <form id="shippingForm">
-                    <div class="form-group">
-                        <label>Họ tên</label>
-                        <input type="text" id="fullName" required>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-500 text-xl"><i class="fa fa-map-marker-alt"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold">Thông tin giao hàng</h3>
+                        <p class="text-gray-400 text-sm">Điền thông tin để bé cưng nhận được món quà dễ thương này nhé!</p>
                     </div>
-                    <div class="form-group">
-                        <label>Số điện thoại</label>
-                        <input type="tel" id="phone" required>
+                </div>
+
+                <form id="checkoutForm" action="tratien.html" method="GET" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="relative">
+                        <label class="block text-sm font-medium mb-1">Họ và tên *</label>
+                        <i class="fa fa-user absolute left-3 top-10 text-orange-300"></i>
+                        <input type="text" name="fullname" id="fullname" placeholder="Nguyễn Bảo Ngọc" required class="w-full pl-10 pr-4 py-3 border border-orange-100 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
                     </div>
-                    <div class="form-group">
-                        <label>Tỉnh/Thành</label>
-                        <select id="province" required><option value="">Chọn Tỉnh/Thành</option></select>
+                    <div class="relative">
+                        <label class="block text-sm font-medium mb-1">Số điện thoại *</label>
+                        <i class="fa fa-phone absolute left-3 top-10 text-orange-300"></i>
+                        <input type="tel" name="phone" id="phone" placeholder="09xx xxx xxx" required class="w-full pl-10 pr-4 py-3 border border-orange-100 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
                     </div>
-                    <div class="form-group">
-                        <label>Quận/Huyện</label>
-                        <select id="district" required><option value="">Chọn Quận/Huyện</option></select>
+                    <div class="relative md:col-span-2">
+                        <label class="block text-sm font-medium mb-1">Email *</label>
+                        <i class="fa fa-envelope absolute left-3 top-10 text-orange-300"></i>
+                        <input type="email" name="email" id="email" placeholder="baongoc@petmail.vn" required class="w-full pl-10 pr-4 py-3 border border-orange-100 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
                     </div>
-                    <div class="form-group">
-                        <label>Phường/Xã</label>
-                        <select id="ward" required><option value="">Chọn Phường/Xã</option></select>
-                    </div>
-                    <div class="form-group">
-                        <label>Địa chỉ chi tiết</label>
-                        <input type="text" id="address" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Ghi chú</label>
-                        <textarea id="notes"></textarea>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <a href="giohang.html" style="color: #666;">Quay lại giỏ hàng</a>
-                        <button type="submit" class="btn btn-submit" style="padding:10px 20px; background:#fb8500; color:white; border:none; border-radius:8px; cursor:pointer;">Tiếp tục thanh toán</button>
-                    </div>
-                </form>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 md:col-span-2">
+    
+    <div class="flex flex-col">
+        <label class="text-sm font-semibold text-gray-700 mb-2">Tỉnh / Thành phố <span class="text-red-500">*</span></label>
+        <div class="relative h-12">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-regular fa-map text-orange-300"></i>
             </div>
-        </div>
-        <div class="sidebar-content">
-            <div class="ui-card">
-                <h3>Tóm tắt đơn hàng</h3>
-                <p>Tổng tiền: <strong id="totalDisplay" style="color: #e53935; font-size: 1.2em;">0đ</strong></p>
+            <select id="province" name="province" required class="w-full h-full pl-11 pr-8 py-0 bg-transparent border border-orange-200 rounded-xl text-gray-700 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400 appearance-none transition-all">
+                <option value="">-- Chọn tỉnh / thành --</option>
+                </select>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
             </div>
         </div>
     </div>
 
+    <div class="flex flex-col">
+        <label class="text-sm font-semibold text-gray-700 mb-2">Quận / Huyện <span class="text-red-500">*</span></label>
+        <div class="relative h-12">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-solid fa-map-location-dot text-orange-300"></i>
+            </div>
+            <select id="district" name="district" required class="w-full h-full pl-11 pr-8 py-0 bg-transparent border border-orange-200 rounded-xl text-gray-700 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400 appearance-none transition-all">
+                <option value="">-- Chọn quận / huyện --</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <label class="text-sm font-semibold text-gray-700 mb-2">Phường / Xã <span class="text-red-500">*</span></label>
+        <div class="relative h-12">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-solid fa-location-dot text-orange-300"></i>
+            </div>
+            <select id="ward" name="ward" required class="w-full h-full pl-11 pr-8 py-0 bg-transparent border border-orange-200 rounded-xl text-gray-700 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400 appearance-none transition-all">
+                <option value="">-- Chọn phường / xã --</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+                    <div class="relative md:col-span-2">
+                        <label class="block text-sm font-medium mb-1">Địa chỉ chi tiết *</label>
+                        <i class="fa fa-home absolute left-3 top-10 text-orange-300"></i>
+                        <input type="text" name="address" id="address" placeholder="Số nhà, tên đường, tòa nhà..." required class="w-full pl-10 pr-4 py-3 border border-orange-100 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none">
+                    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 items-start">
+    
+    <div class="flex flex-col">
+        <label class="text-sm font-semibold text-gray-700 mb-2 whitespace-nowrap h-5">Ngày giao hàng mong muốn</label>
+        <div class="relative h-12">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-regular fa-calendar text-orange-300"></i>
+            </div>
+            <input type="date" id="delivery_date" name="delivery_date" class="w-full h-full pl-11 pr-4 py-0 bg-transparent border border-orange-200 rounded-xl text-gray-700 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400 transition-all leading-[48px]">
+        </div>
+        <span class="text-[11px] text-gray-400 mt-2"><i class="fa-solid fa-circle-info mr-1"></i>Có thể để trống, chúng mình giao sớm nhất</span>
+    </div>
+
+    <div class="flex flex-col">
+        <label class="text-sm font-semibold text-gray-700 mb-2 whitespace-nowrap h-5">Khung giờ giao</label>
+        <div class="relative h-12">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <i class="fa-regular fa-clock text-orange-300"></i>
+            </div>
+            <select id="delivery_time" name="delivery_time" class="w-full h-full pl-11 pr-8 py-0 bg-transparent border border-orange-200 rounded-xl text-gray-700 focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-400 appearance-none transition-all leading-[48px]">
+                <option value="">Bất kỳ khung giờ nào</option>
+                <option value="morning">Buổi sáng (08:00 - 12:00)</option>
+                <option value="afternoon">Buổi chiều (13:00 - 17:00)</option>
+                <option value="evening">Buổi tối (18:00 - 21:00)</option>
+            </select>
+            <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fa-solid fa-chevron-down text-gray-400 text-sm"></i>
+            </div>
+        </div>
+    </div>
+
+</div>
+                    <div class="relative md:col-span-2">
+                        <label class="block text-sm font-medium mb-1">Ghi chú đơn hàng</label>
+                        <i class="fa fa-pencil-alt absolute left-3 top-4 text-orange-300"></i>
+                        <textarea name="note" rows="3" placeholder="Vd: Gọi trước khi giao, để trước cửa nhà..." class="w-full pl-10 pr-4 py-3 border border-orange-100 rounded-xl focus:ring-2 focus:ring-orange-400 focus:outline-none"></textarea>
+                    </div>
+                </form>
+
+                <div class="flex justify-between mt-8">
+                    <a href="giohang.html" class="bg-[#FFF8DE] text-gray-700 px-8 py-3 rounded-xl font-bold hover:bg-yellow-100 transition-all">← Quay lại</a>
+                    <button type="submit" form="checkoutForm" class="bg-[#F97316] text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-200">Tiếp tục thanh toán →</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-content">
+            <div class="ui-card">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><i class="fa fa-file-invoice"></i> Tóm tắt đơn hàng</h3>
+                <div id="sidebar-items-list" class="space-y-3 mb-4"></div>
+                <div class="mt-4 flex gap-2">
+                    <input type="text" placeholder="Mã giảm giá / voucher" class="border rounded-lg p-2 flex-1 text-sm">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium">Áp dụng</button>
+                </div>
+                <div class="mt-6 space-y-2">
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Tạm tính</span><span id="subTotal">0đ</span></div>
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Phí vận chuyển</span><span class="text-green-500">Miễn phí</span></div>
+                    <div class="flex justify-between text-xl font-bold pt-4 border-t">
+                        <span>Tổng cộng</span>
+                        <span class="text-orange-500" id="finalTotal">0đ</span>
+                    </div>
+                </div>
+                <div class="mt-6 p-3 bg-yellow-50 rounded-xl border border-yellow-100 flex gap-3 items-start">
+                    <i class="fa fa-shield-alt text-yellow-600 mt-1"></i>
+                    <p class="text-xs text-yellow-700">Đơn hàng của bạn được bảo mật tuyệt đối bởi VKU Security Engine</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
+        var cit = document.getElementById("province");
+        var dis = document.getElementById("district");
+        var ward = document.getElementById("ward");
+        
+        var Parameter = {
+          url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
+          method: "GET", 
+          responseType: "application/json", 
+        };
+        
+        var promise = axios(Parameter);
+        promise.then(function (result) {
+          renderCity(result.data);
+        });
+        
+        function renderCity(data) {
+          for (const x of data) {
+            cit.options[cit.options.length] = new Option(x.Name, x.Id);
+          }
+          cit.onchange = function () {
+            dis.length = 1;
+            ward.length = 1;
+            if(this.value != ""){
+              const result = data.filter(n => n.Id === this.value);
+              for (const k of result[0].Districts) {
+                dis.options[dis.options.length] = new Option(k.Name, k.Id);
+              }
+            }
+          };
+          dis.onchange = function () {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === cit.value);
+            if (this.value != "") {
+              const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+              for (const w of dataWards) {
+                ward.options[ward.options.length] = new Option(w.Name, w.Id);
+              }
+            }
+          };
+        }
+
+        // Logic đồng bộ giỏ hàng mini
         document.addEventListener('DOMContentLoaded', function() {
             const cart = JSON.parse(localStorage.getItem('vku_cart')) || {};
-            const total = Object.values(cart).reduce((sum, item) => sum + (item.price * item.qty), 0);
-            document.getElementById('totalDisplay').textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
+            const sidebarItemsList = document.getElementById('sidebar-items-list');
+            const subTotalEl = document.getElementById('subTotal');
+            const finalTotalEl = document.getElementById('finalTotal');
+            let total = 0;
 
-            const provinceSelect = document.getElementById('province');
-            const districtSelect = document.getElementById('district');
-            const wardSelect = document.getElementById('ward');
-            const form = document.getElementById('shippingForm');
-
-            fetch('https://provinces.open-api.vn/api/p/')
-                .then(res => res.json())
-                .then(data => {
-                    data.forEach(p => {
-                        const option = document.createElement('option');
-                        option.value = p.code;
-                        option.textContent = p.name;
-                        provinceSelect.appendChild(option);
-                    });
-                });
-
-            provinceSelect.addEventListener('change', function() {
-                districtSelect.innerHTML = '<option value="">Chọn Quận/Huyện</option>';
-                wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
-                if (!this.value) return;
-                fetch(`https://provinces.open-api.vn/api/p/${this.value}?depth=2`)
-                    .then(res => res.json())
-                    .then(data => {
-                        data.districts.forEach(d => {
-                            const option = document.createElement('option');
-                            option.value = d.code;
-                            option.textContent = d.name;
-                            districtSelect.appendChild(option);
-                        });
-                    });
+            Object.keys(cart).forEach((id, index) => {
+                const item = cart[id];
+                total += item.price * item.qty;
+                const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
+                const pastelBg = index % 2 === 0 ? 'bg-[#FFE7E7]' : 'bg-[#FFF1B8]';
+                
+                sidebarItemsList.innerHTML += `
+                <div class="flex items-center justify-between text-sm">
+                    <div class="flex items-center gap-3">
+                        <div class="relative w-10 h-10 ${pastelBg} rounded-lg flex items-center justify-center p-1">
+                            <img src="${imgSrc}" class="max-w-full max-h-full object-contain rounded-sm">
+                            <span class="absolute -top-2 -left-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">${item.qty}</span>
+                        </div>
+                        <span class="text-gray-600 truncate w-32">${item.name}</span>
+                    </div>
+                    <span class="font-medium">${new Intl.NumberFormat('vi-VN').format(item.price * item.qty)}đ</span>
+                </div>`;
             });
-
-            districtSelect.addEventListener('change', function() {
-                wardSelect.innerHTML = '<option value="">Chọn Phường/Xã</option>';
-                if (!this.value) return;
-                fetch(`https://provinces.open-api.vn/api/d/${this.value}?depth=2`)
-                    .then(res => res.json())
-                    .then(data => {
-                        data.wards.forEach(w => {
-                            const option = document.createElement('option');
-                            option.value = w.code;
-                            option.textContent = w.name;
-                            wardSelect.appendChild(option);
-                        });
-                    });
-            });
-
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const shippingInfo = {
-                    fullName: document.getElementById('fullName').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value,
-                    province: provinceSelect.options[provinceSelect.selectedIndex].text,
-                    district: districtSelect.options[districtSelect.selectedIndex].text,
-                    ward: wardSelect.options[wardSelect.selectedIndex].text,
-                    notes: document.getElementById('notes').value
-                };
-                localStorage.setItem('vku_shipping', JSON.stringify(shippingInfo));
-                window.location.href = 'tratien.html'; 
-            });
+            
+            subTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
+            finalTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
         });
     </script>
 </body>
