@@ -2,45 +2,67 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng - VKU Pet Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        :root { --primary-color: #ffb703; --secondary-color: #fb8500; }
-        body { font-family: 'Nunito', sans-serif; background: #f8f9fa; }
-        .container { max-width: 1000px; margin: 20px auto; padding: 20px; }
-        .stepper { display: flex; justify-content: space-between; margin-bottom: 30px; }
-        .step { padding: 10px 20px; border-radius: 20px; background: #ddd; color: #666; }
-        .step.active { background: var(--primary-color); color: #fff; font-weight: bold; }
-        .cart-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .cart-box { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .btn { display: inline-block; padding: 10px 20px; background: var(--primary-color); color: #fff; text-decoration: none; border-radius: 8px; border: none; cursor: pointer; }
-        .btn-checkout { background: var(--secondary-color); width: 100%; text-align: center; margin-top: 10px; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="checkout-global.css">
 </head>
-<body>
-    <div class="container">
-        <div class="stepper">
-            <div class="step active">1. Giỏ hàng</div>
-            <div class="step">2. Thông tin giao hàng</div>
-            <div class="step">3. Thanh toán</div>
-            <div class="step">4. Hoàn tất</div>
+<body class="p-4">
+    <!-- Header -->
+    <header class="flex justify-between items-center py-4 px-8 bg-white rounded-full shadow-sm mb-8">
+        <div class="font-bold text-xl bg-blue-100 text-blue-600 px-4 py-2 rounded-full">VKU PET SHOP</div>
+        <nav class="flex gap-6 font-medium">
+            <a href="#">Trang chủ</a><a href="#">Cửa hàng</a><a href="#">Dịch vụ</a><a href="#">Liên hệ</a>
+        </nav>
+        <div class="flex gap-4 text-xl">
+            <i class="fa fa-search"></i><i class="fa fa-heart"></i>
+            <div class="relative"><i class="fa fa-shopping-bag"></i><span class="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">4</span></div>
         </div>
+    </header>
 
-        <div class="cart-layout">
-            <div class="cart-box">
-                <h3>Sản phẩm của bạn</h3>
+    <!-- Stepper -->
+    <div class="ui-card mb-8 flex justify-between items-center px-12">
+        <div class="flex items-center gap-2 text-orange-600 font-bold"><div class="w-10 h-10 rounded-full bg-orange-500 text-white flex items-center justify-center">1</div> Giỏ hàng</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">2</div> Giao hàng</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">3</div> Thanh toán</div>
+        <div class="flex-1 h-0.5 bg-gray-200 mx-4"></div>
+        <div class="flex items-center gap-2 text-gray-400"><div class="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center">4</div> Hoàn tất</div>
+    </div>
+
+    <div class="checkout-wrapper">
+        <div class="main-content">
+            <div class="ui-card">
+                <h3 class="text-xl font-bold mb-4">Giỏ hàng của bạn 🐾</h3>
                 <div id="cartPageContent"></div>
-                <div style="margin-top: 20px;">
-                    <a href="mua_hang.php" class="btn" style="background:#666;">Tiếp tục mua hàng</a>
+                <div class="mt-8 flex justify-between items-center">
+                    <a href="mua_hang.php" class="text-gray-500 hover:text-orange-500 transition-colors font-medium">← Tiếp tục mua sắm</a>
+                    <a href="diachigiaohang.html" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-orange-200">Tiếp tục →</a>
                 </div>
             </div>
-            <div class="cart-box">
-                <h3>Tóm tắt đơn hàng</h3>
-                <p>Tạm tính: <span id="subTotal">0đ</span></p>
-                <hr>
-                <p><strong>Tổng tiền: <span id="finalTotal" style="color: #e53935; font-size: 1.2em;">0đ</span></strong></p>
-                <a href="diachigiaohang.html" class="btn btn-checkout">Tiếp tục</a>
+        </div>
+        <div class="sidebar-content">
+            <div class="ui-card">
+                <h3 class="font-bold mb-4 flex items-center gap-2"><i class="fa fa-file-invoice"></i> Tóm tắt đơn hàng</h3>
+                <div id="sidebar-items-list" class="space-y-3 mb-4"></div>
+                <div class="mt-4 flex gap-2">
+                    <input type="text" placeholder="Mã giảm giá / voucher" class="border rounded-lg p-2 flex-1 text-sm">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-medium">Áp dụng</button>
+                </div>
+                <div class="mt-6 space-y-2">
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Tạm tính</span><span id="subTotal">0đ</span></div>
+                    <div class="flex justify-between text-gray-500 text-sm"><span>Phí vận chuyển</span><span class="text-green-500">Miễn phí</span></div>
+                    <div class="flex justify-between text-xl font-bold pt-4 border-t">
+                        <span>Tổng cộng</span>
+                        <span class="text-orange-500" id="finalTotal">0đ</span>
+                    </div>
+                </div>
+                <div class="mt-6 p-3 bg-yellow-50 rounded-xl border border-yellow-100 flex gap-3 items-start">
+                    <i class="fa fa-shield-alt text-yellow-600 mt-1"></i>
+                    <p class="text-xs text-yellow-700">Đơn hàng của bạn được bảo mật tuyệt đối bởi VKU Security Engine</p>
+                </div>
             </div>
         </div>
     </div>
@@ -51,6 +73,7 @@
             const cartPageContent = document.getElementById('cartPageContent');
             const finalTotalEl = document.getElementById('finalTotal');
             const subTotalEl = document.getElementById('subTotal');
+            const sidebarItemsList = document.getElementById('sidebar-items-list');
             
             function formatPrice(value){
                 return new Intl.NumberFormat('vi-VN').format(value) + 'đ';
@@ -71,39 +94,61 @@
                 let total = 0;
 
                 if (items.length === 0) {
-                    cartPageContent.innerHTML = '<div style="text-align:center; padding: 50px 0;"><p>Giỏ hàng của bạn đang trống.</p><a href="mua_hang.php" class="btn">Mua sắm ngay</a></div>';
+                    cartPageContent.innerHTML = '<div class="text-center py-12"><p class="text-gray-500">Giỏ hàng của bạn đang trống.</p><a href="mua_hang.php" class="text-orange-500 font-bold underline">Mua sắm ngay</a></div>';
                     finalTotalEl.textContent = '0đ';
                     subTotalEl.textContent = '0đ';
+                    sidebarItemsList.innerHTML = '';
                     return;
                 }
 
-                let html = '';
-                items.forEach(id => {
+                let mainHtml = '';
+                let sidebarHtml = '';
+                
+                items.forEach((id, index) => {
                     const item = cart[id];
                     total += item.price * item.qty;
                     const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
+                    const pastelBg = index % 2 === 0 ? 'bg-[#FFE7E7]' : 'bg-[#FFF1B8]';
 
-                    html += `
-                    <div class="cart-page-item" style="display: flex; align-items: center; justify-content: space-between; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-bottom: 15px;">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <img src="${imgSrc}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                    // Main content item
+                    mainHtml += `
+                    <div class="flex items-center justify-between p-4 border-b last:border-0 hover:bg-gray-50 transition-colors rounded-xl mb-2">
+                        <div class="flex items-center gap-4">
+                            <div class="${pastelBg} w-20 h-20 rounded-2xl flex items-center justify-center p-2">
+                                <img src="${imgSrc}" class="max-w-full max-h-full object-contain rounded-lg">
+                            </div>
                             <div>
-                                <h4 style="margin: 0 0 5px 0;">${item.name}</h4>
-                                <strong style="color: #e53935;">${formatPrice(item.price)}</strong>
+                                <p class="font-bold text-gray-800">${item.name}</p>
+                                <p class="text-xs text-gray-400">Size: M | Vị: Gà</p>
+                                <p class="text-orange-500 font-bold mt-1">${formatPrice(item.price)}</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 20px;">
-                            <div class="qty-control" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 20px; overflow: hidden;">
-                                <button class="btn-minus" data-id="${id}" style="border:none; background:none; padding: 5px 15px; cursor:pointer;">-</button>
-                                <span style="padding: 5px 10px;">${item.qty}</span>
-                                <button class="btn-plus" data-id="${id}" style="border:none; background:none; padding: 5px 15px; cursor:pointer;">+</button>
+                        <div class="flex items-center gap-6">
+                            <div class="flex items-center bg-gray-100 rounded-full px-3 py-1 gap-3">
+                                <button class="btn-minus text-gray-500 hover:text-orange-500" data-id="${id}">-</button>
+                                <span class="font-medium w-4 text-center">${item.qty}</span>
+                                <button class="btn-plus text-gray-500 hover:text-orange-500" data-id="${id}">+</button>
                             </div>
-                            <button class="btn-delete" data-id="${id}" style="border:none; background:none; color: #999; cursor:pointer; font-size: 14px;">🗑️ Xóa</button>
+                            <i class="far fa-trash-alt text-gray-300 hover:text-red-500 cursor-pointer transition-colors btn-delete" data-id="${id}"></i>
                         </div>
+                    </div>`;
+
+                    // Sidebar mini item
+                    sidebarHtml += `
+                    <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center gap-3">
+                            <div class="relative w-10 h-10 ${pastelBg} rounded-lg flex items-center justify-center p-1">
+                                <img src="${imgSrc}" class="max-w-full max-h-full object-contain rounded-sm">
+                                <span class="absolute -top-2 -left-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">${item.qty}</span>
+                            </div>
+                            <span class="text-gray-600 truncate w-32">${item.name}</span>
+                        </div>
+                        <span class="font-medium">${formatPrice(item.price * item.qty)}</span>
                     </div>`;
                 });
 
-                cartPageContent.innerHTML = html;
+                cartPageContent.innerHTML = mainHtml;
+                sidebarItemsList.innerHTML = sidebarHtml;
                 finalTotalEl.textContent = formatPrice(total);
                 subTotalEl.textContent = formatPrice(total);
                 attachCartEvents();

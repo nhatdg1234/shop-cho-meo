@@ -1,0 +1,28 @@
+/* Global Styles */
+body { background-color: #FFFDF6 !important; font-family: 'Quicksand', sans-serif !important; color: #2D3748; margin: 0; padding: 0; }
+
+/* Layout */
+.checkout-wrapper { display: flex; max-width: 1200px; gap: 30px; margin: 20px auto; padding: 0 20px; align-items: flex-start; }
+.main-content { width: 70%; }
+.sidebar-content { width: 30%; position: sticky; top: 20px; }
+
+/* UI Card */
+.ui-card { background: #ffffff; border-radius: 24px !important; box-shadow: 0 10px 30px rgba(226, 135, 67, 0.04); border: 1px solid rgba(226, 135, 67, 0.1); padding: 24px; margin-bottom: 20px; }
+
+/* Colors */
+.bg-brand-orange { background-color: #FF7A45; }
+.text-brand-orange { color: #FF7A45; }
+.border-brand-orange { border-color: #FF7A45; }
+
+/* Header */
+.header-vku { background: #fff; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: bold; font-size: 24px; color: #E65100; }
+.nav-icons { display: flex; gap: 15px; align-items: center; }
+
+/* Stepper */
+.stepper-container { display: flex; justify-content: center; margin: 30px 0; gap: 10px; }
+.step-item { display: flex; align-items: center; color: #ccc; }
+.step-item.active { color: #E65100; }
+.step-circle { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; margin-right: 8px; }
+.step-item.active .step-circle { border-color: #E65100; background: #E65100; color: white; }
+.step-line { width: 50px; height: 2px; background: #ccc; margin: 0 10px; }
