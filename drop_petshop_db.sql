@@ -1,0 +1,1 @@
+DROP DATABASE IF EXISTS petshop_db;

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VKU Pet Shop</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="product-card.css">
+        <link rel="stylesheet" href="product_card.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -28,12 +28,12 @@
             <nav>
                 <ul id="MenuItems">
                     <li><a href="./index.html">Home</a> </li>
-                    <li><a href="./mua-hang.html">Hàng hóa</a> </li>
+                    <li><a href="./mua_hang.html">Hàng hóa</a> </li>
                     <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
                     <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
                 </ul>
             </nav>
-            <img src="./anh/shop.png" width="30px" height="30px" id="cartIcon" class="cart-icon">
+            
             <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
         </div>
         <div class="row">
@@ -174,7 +174,7 @@
                     </article>
                 </div>
                 <div style="text-align: center; margin-top: 30px;">
-                    <a href="./mua-hang.html" class="btn">Khám phá thêm &#9755;</a>
+                    <a href="./mua_hang.html" class="btn">Khám phá thêm &#9755;</a>
                 </div>
             </div>
         <!-- KHUYEN NGHI--->
@@ -273,7 +273,7 @@
 </div>
 </div>
 
-<div class="cart-overlay" id="cartOverlay"></div>
+                <div class="cart-overlay" id="cartOverlay"></div>
 
 <div class="cart-drawer" id="cartDrawer">
     <div class="cart-drawer__header">
@@ -282,19 +282,27 @@
     </div>
     
     <div class="cart-drawer__content" id="cartDrawerContent">
+        <div class="cart-item">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" alt="Chó Corgi">
+            <div class="cart-item-details">
+                <h4>Chó Corgi thuần chủng</h4>
+                <p>500.000đ</p>
+            </div>
+            <button type="button" class="cart-item__remove" aria-label="Xóa sản phẩm">&times;</button>
+        </div>
     </div>
     
     <div class="cart-drawer__footer">
         <div class="cart-drawer__total">
             <span>Tổng tiền:</span>
-            <span class="total-price" id="cartTotal">0đ</span>
+            <span class="total-price" id="cartTotal">500.000đ</span>
         </div>
         <button type="button" class="btn-checkout">Thanh toán ngay</button>
         <button type="button" class="btn-continue" id="continueShopping">Tiếp tục mua sắm</button>
     </div>
 </div>
 
-<script src="product-card.js"></script>
+<script src="product_card.js"></script>
 <script src="sidebar.js"></script>
 
 </body>

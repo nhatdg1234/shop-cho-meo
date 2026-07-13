@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Mobile-friendly Dropdown Navigation Example</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="dist/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <style>
+        body { background-color: #fafafa; }
+        .container { margin: 100px auto; text-align: center; }
+      </style>
+
+</head>
+<body>
+    <header>
+        <nav class="sd-nav-menu">
+            <div class="sd-menu-header">
+                <div class="sd-desktop-menu">
+
+                </div>
+                <button class="sd-menu-toggle">
+                    <i class="material-icons">menu</i>
+                </button>
+            </div>
+            <div class="sd-mobile-menu">
+            </div>
+        </nav>
+    </header>
+<div class="page-layout">
+    <aside class="left-menu" aria-label="Danh mục sản phẩm">
+        <div class="left-menu__header"><i class="fa-solid fa-paw"></i> Danh mục</div>
+        <ul class="left-menu__list">
+            <li class="menu-parent">
+                <button type="button" class="menu-parent__title" aria-expanded="false">
+                    <i class="fa-solid fa-dog fa-icon"></i>
+                    Chó
+                    <i class="fa-solid fa-chevron-down fa-chevron"></i>
+                </button>
+                <ul class="left-menu-item">
+                    <li><a href="cartegory.html">Giống mới về</a></li>
+                    <li><a href="cartegory.html">Giống lớn</a></li>
+                    <li><a href="cartegory.html">Chó Shiba</a></li>
+                    <li><a href="cartegory.html">Chó phoc</a></li>
+                </ul>
+            </li>
+            <li class="menu-parent">
+                <button type="button" class="menu-parent__title" aria-expanded="false">
+                    <i class="fa-solid fa-cat fa-icon"></i>
+                    Mèo
+                    <i class="fa-solid fa-chevron-down fa-chevron"></i>
+                </button>
+                <ul class="left-menu-item">
+                    <li><a href="cartegory.html">Giống mới về</a></li>
+                    <li><a href="cartegory.html">Mèo đen</a></li>
+                    <li><a href="cartegory.html">Mèo lai</a></li>
+                    <li><a href="cartegory.html">Mèo nước ngoài</a></li>
+                </ul>
+            </li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-seedling"></i> Vật nuôi đang lớn</a></li>
+            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-bolt"></i> Flash sale</a></li>
+            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-fire"></i> Hot pet</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-layer-group"></i> Bộ sưu tập</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-bowl-food"></i> Thức ăn</a></li>
+            <li><a class="menu-single" href="#"><i class="fa-solid fa-suitcase-medical"></i> Vật dụng nuôi</a></li>
+        </ul>
+    </aside>
+
+    <div class="content-area">
+<div class="container">
+    <div id="carbon-block" style="margin-bottom:30px" align="center"></div>
+<div style="margin-bottom:30px" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<h1>Dynamic Mobile-friendly Dropdown Navigation Example</h1>
+<p>A mobile-friendly, fully responsive, multi-level dropdown menu written in JavaScript (jQuery) and CSS/CSS3.</p>
+</div>
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="app.js"></script>
+    <script>
+        let list = [
+            {
+                title: "Home",
+                url: "#"
+            },
+            {
+                title: "About",
+                url: "#"
+            },
+            {
+                title: "Projects",
+                url: "#"
+            },
+            {
+                title: "_Themes",
+                url: "#"
+            },
+            {
+                title: "__Blogger",
+                url: "#"
+            },
+            {
+                title: "__Blogger",
+                url: "#"
+            },
+            {
+                title: "_Templates",
+                url: "#"
+            },
+            {
+                title: "Contact",
+                url: "#"
+            }
+        ];
+        jQuery(document).ready(function(){
+    let $ = jQuery;
+        $(".sd-desktop-menu").addMenu(list);
+        $(".sd-mobile-menu").addMenu(list);
+        $().mobileMenuInit();
+        });
+
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>

@@ -1,69 +1,65 @@
-<?php 
-session_start(); 
+<?php
+session_start();
 include "db_conn.php";
 
 if (isset($_POST['uname']) && isset($_POST['password'])
-    && isset($_POST['name']) && isset($_POST['re_password'])) {
+    && isset($_POST['name']) && isset($_POST['re_password']) && isset($_POST['email'])) {
 
-	function validate($data){
+	function validate_text($data){
        $data = trim($data);
-	   $data = stripslashes($data);
 	   $data = htmlspecialchars($data);
 	   return $data;
 	}
 
-	$uname = validate($_POST['uname']);
-	$pass = validate($_POST['password']);
+	$uname = validate_text($_POST['uname']);
+	$pass = trim($_POST['password']);
+	$re_pass = trim($_POST['re_password']);
+	$name = validate_text($_POST['name']);
+	$email = validate_text($_POST['email']);
 
-	$re_pass = validate($_POST['re_password']);
-	$name = validate($_POST['name']);
-
-	$user_data = 'uname='. $uname. '&name='. $name;
-//rong va khop voi xac nhan, chuyen lai trang nay va them loi
+	$user_data = 'uname=' . urlencode($uname) . '&name=' . urlencode($name) . '&email=' . urlencode($email);
 
 	if (empty($uname)) {
-		header("Location: signup.php?error=User Name is required&$user_data");
+		header("Location: signup.php?error=" . urlencode("User Name is required") . "&$user_data");
+	    exit();
+	}else if(empty($email)){
+        header("Location: signup.php?error=" . urlencode("Email is required") . "&$user_data");
+	    exit();
+	}else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        header("Location: signup.php?error=" . urlencode("Invalid email format") . "&$user_data");
 	    exit();
 	}else if(empty($pass)){
-        header("Location: signup.php?error=Password is required&$user_data");
+        header("Location: signup.php?error=" . urlencode("Password is required") . "&$user_data");
 	    exit();
-	}
-	else if(empty($re_pass)){
-        header("Location: signup.php?error=Re Password is required&$user_data");
+	}else if(empty($re_pass)){
+        header("Location: signup.php?error=" . urlencode("Re Password is required") . "&$user_data");
 	    exit();
-	}
-
-	else if(empty($name)){
-        header("Location: signup.php?error=Name is required&$user_data");
+	}else if(empty($name)){
+        header("Location: signup.php?error=" . urlencode("Name is required") . "&$user_data");
 	    exit();
-	}
-
-	else if($pass !== $re_pass){
-        header("Location: signup.php?error=The confirmation password  does not match&$user_data");
+	}else if(strlen($pass) < 6){
+        header("Location: signup.php?error=" . urlencode("Mật khẩu phải từ 6 ký tự trở lên") . "&$user_data");
 	    exit();
-	}
+	}else if($pass !== $re_pass){
+        header("Location: signup.php?error=" . urlencode("The confirmation password does not match") . "&$user_data");
+	    exit();
+	}else{
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
+        $stmt->execute([$uname, $email]);
 
-	else{
-
-		// hashing the password
-        $pass = md5($pass);
-//kiem tra ton tai
-	    $sql = "SELECT * FROM users WHERE user_name='$uname' ";
-		$result = mysqli_query($conn, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			header("Location: signup.php?error=The username is taken try another&$user_data");
+		if ($stmt->fetch()) {
+			header("Location: signup.php?error=" . urlencode("Username or Email already exists") . "&$user_data");
 	        exit();
 		}else {
+           $hashed_password = password_hash($pass, PASSWORD_BCRYPT);
+           $stmt = $conn->prepare("INSERT INTO users(customer_name, email, username, password) VALUES(?, ?, ?, ?)");
+           $result2 = $stmt->execute([$name, $email, $uname, $hashed_password]);
 
-			//chua ton tai thi tao
-           $sql2 = "INSERT INTO users(user_name, password, name) VALUES('$uname', '$pass', '$name')";
-           $result2 = mysqli_query($conn, $sql2);
            if ($result2) {
-           	 header("Location: signup.php?success=Your account has been created successfully");
+            	 header("Location: signup.php?success=" . urlencode("Your account has been created successfully"));
 	         exit();
            }else {
-	           	header("Location: signup.php?error=unknown error occurred&$user_data");
+	           	header("Location: signup.php?error=" . urlencode("Unknown error occurred") . "&$user_data");
 		        exit();
            }
 		}

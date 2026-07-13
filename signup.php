@@ -27,17 +27,29 @@
                       placeholder="Name"><br>
           <?php }?>
 
-          <label>User Name</label>
-          <?php if (isset($_GET['uname'])) { ?>
-               <input type="text" 
-                      name="uname" 
-                      placeholder="User Name"
-                      value="<?php echo $_GET['uname']; ?>"><br>
-          <?php }else{ ?>
-               <input type="text" 
-                      name="uname" 
-                      placeholder="User Name"><br>
-          <?php }?>
+           <label>Email</label>
+           <?php if (isset($_GET['email'])) { ?>
+                <input type="email" 
+                       name="email" 
+                       placeholder="Email"
+                       value="<?php echo $_GET['email']; ?>"><br>
+           <?php }else{ ?>
+                <input type="email" 
+                       name="email" 
+                       placeholder="Email"><br>
+           <?php }?>
+
+           <label>User Name</label>
+           <?php if (isset($_GET['uname'])) { ?>
+                <input type="text" 
+                       name="uname" 
+                       placeholder="User Name"
+                       value="<?php echo $_GET['uname']; ?>"><br>
+           <?php }else{ ?>
+                <input type="text" 
+                       name="uname" 
+                       placeholder="User Name"><br>
+           <?php }?>
 
 
      	<label>Password</label>
