@@ -37,7 +37,7 @@ try {
         $_SESSION['role'] = $row['role'];
 
         // 3. Đã chỉnh sửa: Redirect về homead.php theo đúng project hiện tại
-        $redirectUrl = ($row['role'] === 'admin') ? 'admin_dashboard.php' : 'home.php';
+        $redirectUrl = ($row['role'] === 'admin') ? 'admin_dashboard.php' : './shop/user/home.php';
         
         echo json_encode([
             "status" => "success", 

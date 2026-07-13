@@ -13,7 +13,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
 <body>
      <h1 >Hello, <?php echo htmlspecialchars($_SESSION['name']); ?></h1>
      <a href="logout.php">Logout</a>
-     <a href="./shop/index.html" class="btn">Vào trang &#9755;</a>
+     <a href="./shop/user/php.home" class="btn">Vào trang &#9755;</a>
      
 </body>
 </html>

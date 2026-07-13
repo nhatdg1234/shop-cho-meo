@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 :root{
   --cream: #FFFBEA;
   --cream-deep: #FFF3B0;

@@ -63,11 +63,12 @@ function addToCart(card, btn){
   const id = card.dataset.id;
   const name = card.dataset.name;
   const price = parseFloat(card.dataset.price);
+  const image = card.dataset.image;
 
   if(cart[id]){
     cart[id].qty += 1;
   } else {
-    cart[id] = { name: name, price: price, qty: 1 };
+    cart[id] = { name: name, price: price, qty: 1, image: image };
   }
   saveCart(cart);
   updateCartBadge();
@@ -146,9 +147,10 @@ function initCartDrawer(){
       const itemTotal = item.price * item.qty;
       total += itemTotal;
 
+      const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
       return (
         '<div class="cart-item" data-id="' + id + '">' +
-          '<img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" alt="' + item.name + '">' +
+          '<img src="' + imgSrc + '" alt="' + item.name + '">' +
           '<div class="cart-item-details">' +
             '<h4>' + item.name + '</h4>' +
             '<p>' + formatPrice(item.price) + ' × ' + item.qty + '</p>' +

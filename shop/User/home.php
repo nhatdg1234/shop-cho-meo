@@ -27,8 +27,8 @@
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li><a href="./index.html">Home</a> </li>
-                    <li><a href="./mua_hang.html">Hàng hóa</a> </li>
+                    <li><a href="./home.php">Home</a> </li>
+                    <li><a href="./mua_hang.php">Hàng hóa</a> </li>
                     <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
                     <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
                 </ul>
@@ -40,7 +40,7 @@
             <div class="col-2">
 <h1>Trao niềm hạnh phúc mới<br> cho cuộc sống của bạn!</h1>
 <p>Hạnh phúc không chỉ ở những điều lớn lao mang lại,<br> mà nó còn xuất phát từ những điều nhỏ nhặc, gia đình, bạn bè, và cả thú nuôi.</p>
-<a href="#thunuoinoibat" class="btn">Khám phá ngay &#9755;</a>
+<a href="#khu-vuc-san-pham" class="btn">Khám phá ngay &#9755;</a>
             </div>
             <div class="col-2">
 <img src="./anh/anh_dai_dien_trang.png" >
@@ -100,7 +100,7 @@
             <!-- removed image row per request -->
         </div>
         <!----tinh nang san pham--->
-        <div class="product-card-area">
+<div class="product-card-area" id="khu-vuc-san-pham">
 
                         <div class="cartegory-boloc row">
                                 <select name="" id="">
@@ -125,56 +125,48 @@
                 <div class="toast" id="toast"></div>
 
                 <div class="grid">
-                    <article class="product-card" data-id="kibble-pawnourish" data-name="Premium Grain-Free Kibble" data-price="42.99">
-                        <div class="product-card__media">
-                            <span class="product-card__badge">Bestseller</span>
-                            <button class="product-card__fav" aria-label="Yêu thích">♥</button>
-                            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600" alt="Vòng cổ chó">
-                        </div>
-                        <div class="product-card__body">
-                            <div class="product-card__brand">Pawnourish</div>
-                            <h3 class="product-card__title">Premium Grain-Free Kibble</h3>
-                            <div class="product-card__price">
-                                <span class="product-card__price-current">1.075.000₫</span>
-                                <span class="product-card__price-old">1.350.000₫</span>
-                            </div>
-                            <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
-                        </div>
-                    </article>
+<?php
+// 1. Cần lùi 2 cấp (../../) để ra thư mục gốc gọi đúng file db_conn.php của dự án
+require_once '../../db_conn.php'; 
 
-                    <article class="product-card" data-id="bed-dreampaws" data-name="Orthopedic Memory Foam Bed" data-price="89.00">
-                        <div class="product-card__media">
-                            <span class="product-card__badge new">New</span>
-                            <button class="product-card__fav" aria-label="Yêu thích">♥</button>
-                            <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=600" alt="Chó lông xù">
-                        </div>
-                        <div class="product-card__body">
-                            <div class="product-card__brand">Dreampaws</div>
-                            <h3 class="product-card__title">Orthopedic Memory Foam Bed</h3>
-                            <div class="product-card__price">
-                                <span class="product-card__price-current">2.225.000₫</span>
-                            </div>
-                            <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
-                        </div>
-                    </article>
+try {
+    // 2. Sử dụng PDO truy vấn đồng bộ với toàn bộ hệ thống
+    $stmt = $conn->query("SELECT * FROM products ORDER BY id DESC");
+    $products = $stmt->fetchAll();
 
-                    <article class="product-card" data-id="cho-corgi" data-name="Chó Corgi" data-price="500000">
-                        <div class="product-card__media">
-                            <button class="product-card__fav active" aria-label="Yêu thích">♥</button>
-                            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" alt="Chó Corgi">
-                        </div>
-                        <div class="product-card__body">
-                            <div class="product-card__brand">VKU Pet Shop</div>
-                            <h3 class="product-card__title">Chó Corgi thuần chủng</h3>
-                            <div class="product-card__price">
-                                <span class="product-card__price-current">2.225.000₫</span>
-                            </div>
-                            <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
-                        </div>
-                    </article>
+    if (count($products) > 0) {
+        foreach ($products as $row) {
+            // Định dạng giá tiền chuẩn VNĐ
+            $formatted_price = number_format($row['price'], 0, ',', '.');
+?>
+            <article class="product-card" data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['product_name']) ?>" data-price="<?= $row['price'] ?>" data-image="<?= htmlspecialchars($row['image_url']) ?>">
+                <div class="product-card__media">
+                    <button class="product-card__fav" aria-label="Yêu thích">♥</button>
+                    
+                    <img src="../anh/<?= htmlspecialchars($row['image_url']) ?>" alt="<?= htmlspecialchars($row['product_name']) ?>">
                 </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="./mua_hang.html" class="btn">Khám phá thêm &#9755;</a>
+                <div class="product-card__body">
+                    <div class="product-card__brand">VKU Pet Shop</div>
+                    <h3 class="product-card__title"><?= htmlspecialchars($row['product_name']) ?></h3>
+                    <div class="product-card__price">
+                        <span class="product-card__price-current"><?= $formatted_price ?>₫</span>
+                    </div>
+                    <button class="product-card__btn"><span class="btn-icon">🛒</span> Add to Cart</button>
+                </div>
+            </article>
+<?php
+        }
+    } else {
+        echo "<p style='text-align:center; width:100%; color:#666;'>Hiện tại cửa hàng chưa có thú cưng hoặc sản phẩm nào.</p>";
+    }
+} catch (PDOException $e) {
+    // Hỗ trợ kiểm tra lỗi nếu kết nối hoặc câu lệnh SQL có vấn đề
+    echo "<p style='text-align:center; width:100%; color:red;'>Lỗi hệ thống: Không thể tải danh sách sản phẩm.</p>";
+}
+?>
+                </div>
+                <div style="text-align: center; margin-top: 30px;"></div>
+                    <a href="./mua_hang.php" class="btn">Khám phá thêm &#9755;</a>
                 </div>
             </div>
         <!-- KHUYEN NGHI--->
@@ -297,7 +289,7 @@
             <span>Tổng tiền:</span>
             <span class="total-price" id="cartTotal">500.000đ</span>
         </div>
-        <button type="button" class="btn-checkout">Thanh toán ngay</button>
+        <button type="button" class="btn-checkout" onclick="window.location.href='giohang.html'">Thanh toán ngay</button>
         <button type="button" class="btn-continue" id="continueShopping">Tiếp tục mua sắm</button>
     </div>
 </div>
