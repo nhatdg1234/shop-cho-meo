@@ -1,50 +1,126 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Đặt hàng thành công - VKU Pet Shop</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="checkout-global.css">
-</head>
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VKU Pet Shop - Đặt hàng thành công</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/solid.min.css">
+        
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/mainstyle.css">
+        <link rel="stylesheet" href="checkout-global.css">
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <style>
+            /* Ép font chữ toàn trang theo phong cách hiện đại của thợ FE */
+            body { font-family: 'Be Vietnam Pro', sans-serif !important; background-color: #f8f0d8 !important; }
+            /* Khắc phục lỗi Tailwind làm mất định dạng inline-block của thẻ li trong Menu gốc */
+            #MenuItems li { display: inline-block !important; }
+            .stepper-container { margin-top: 40px; }
+        </style>
+    </head>
+   
 <body>
-    <header class="header-vku">
-        <div class="logo">VKU PET SHOP</div>
-        <nav class="nav-icons">
-            <span>Tìm kiếm</span>
-            <span>Yêu thích</span>
-            <span>Giỏ hàng (0)</span>
-        </nav>
-    </header>
-
-    <div class="stepper-container">
-        <div class="step-item active"><div class="step-circle">1</div> Giỏ hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">2</div> Giao hàng</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">3</div> Thanh toán</div>
-        <div class="step-line"></div>
-        <div class="step-item active"><div class="step-circle">4</div> Hoàn tất</div>
-    </div>
-
-    <div class="checkout-wrapper" style="justify-content: center;">
-        <div class="main-content ui-card" style="text-align: center; padding: 50px;">
-            <div style="font-size: 80px; color: #4caf50; margin-bottom: 20px;">✓</div>
-            <h2>Đặt hàng thành công! 🎉</h2>
-            <p>Cảm ơn bạn đã mua sắm tại VKU Pet Shop. Đơn hàng của bạn đã được ghi nhận.</p>
-            <div id="displayOrderCode" style="padding: 10px 20px; background: #fff3e0; color: #e65100; border-radius: 20px; font-weight: bold; display: inline-block; margin: 15px 0;"></div>
-            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 15px;">
-                <a href="home.php" style="padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; border: 2px solid #ff9800; color: #ff9800;">Đặt đơn mới</a>
-                <a href="#" style="padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; background: #ff9800; color: white;">Theo dõi đơn hàng</a>
+    <div class="header">
+        <div class="giohang">
+            <div class="navbar"> 
+                <div class="logo">
+                    <img src="./anh/anh_logo.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="./home.php" style="color: #2F6FED;">Home</a> </li>
+                        <li><a href="./mua_hang.php" style="color: #2F6FED;">Hàng hóa</a> </li>
+                        <li><a href="./vechungtoi.html" style="color: #2F6FED;">Về chúng tôi</a> </li>
+                        <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/" style="color: #2F6FED;">Tài khoản</a> </li>
+                    </ul>
+                </nav>
+                
+                <img src="./anh/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
         </div>
     </div>
 
+    <div class="stepper-container mb-8 flex justify-between items-center px-12 max-w-6xl mx-auto bg-white p-6 rounded-2xl shadow-sm">
+        <div class="flex items-center gap-2 text-[#ff8a00] font-bold"><div class="w-10 h-10 rounded-full bg-[#ff8a00] text-white flex items-center justify-center"><i class="fa-solid fa-check"></i></div> Giỏ hàng</div>
+        <div class="flex-1 h-0.5 bg-[#ff8a00] mx-4"></div>
+        <div class="flex items-center gap-2 text-[#ff8a00] font-bold"><div class="w-10 h-10 rounded-full bg-[#ff8a00] text-white flex items-center justify-center"><i class="fa-solid fa-check"></i></div> Giao hàng</div>
+        <div class="flex-1 h-0.5 bg-[#ff8a00] mx-4"></div>
+        <div class="flex items-center gap-2 text-[#ff8a00] font-bold"><div class="w-10 h-10 rounded-full bg-[#ff8a00] text-white flex items-center justify-center"><i class="fa-solid fa-check"></i></div> Thanh toán</div>
+        <div class="flex-1 h-0.5 bg-[#ff8a00] mx-4"></div>
+        <div class="flex items-center gap-2 text-[#ff8a00] font-bold"><div class="w-10 h-10 rounded-full bg-[#ff8a00] text-white flex items-center justify-center"><i class="fa-solid fa-check"></i></div> Hoàn tất</div>
+    </div>
+
+    <div class="max-w-2xl mx-auto px-4 pb-20">
+        <div class="bg-white rounded-[24px] p-10 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.05)] text-center">
+            
+            <div class="w-[90px] h-[90px] bg-[#2dc976] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-green-200">
+                <i class="fa-solid fa-check text-[42px] text-white"></i>
+            </div>
+
+            <h2 class="text-3xl md:text-[40px] font-bold text-[#333333] mb-6">Đặt hàng thành công! 🎉</h2>
+
+            <div class="bg-[#fff4d6] inline-block px-6 py-3 rounded-full mb-6">
+                <span class="text-[#777] text-sm">Mã đơn hàng:</span>
+                <span id="display-order-code" class="text-[#ff8a00] font-bold text-lg ml-2">Đang tải...</span>
+            </div>
+
+            <p class="text-[15px] leading-relaxed text-[#777] max-w-[450px] mx-auto mb-10">
+                Cảm ơn bạn đã tin tưởng VKU Pet Shop. Đơn hàng của bạn đã được hệ thống ghi nhận. Chúng mình sẽ chuẩn bị hàng thật chu đáo và sớm giao đến tay bạn!
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="mua_hang.php" class="px-8 py-3.5 border border-[#ddd] bg-white text-[#333] rounded-xl font-medium hover:bg-gray-50 transition-all text-center">
+                    Đặt đơn mới
+                </a>
+                <a href="#" id="btn-track" class="px-8 py-3.5 bg-[#ff8a00] text-white rounded-xl font-medium shadow-[0_10px_20px_rgba(255,138,0,0.25)] hover:bg-[#e67a00] hover:-translate-y-1 transition-all text-center">
+                    Theo dõi đơn hàng
+                </a>
+            </div>
+
+        </div>
+    </div>
+
     <script>
+        // 1. Đọc mã đơn từ URL truyền sang
         document.addEventListener('DOMContentLoaded', function() {
-            const orderCode = localStorage.getItem('last_order_code');
-            const orderCodeEl = document.getElementById('displayOrderCode');
-            if (orderCode && orderCodeEl) orderCodeEl.textContent = 'Mã đơn hàng: ' + orderCode;
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderCode = urlParams.get('order_code');
+            const orderId = urlParams.get('order_id');
+            const displayElement = document.getElementById('display-order-code');
+
+            if (orderCode) {
+                displayElement.textContent = '#' + orderCode;
+            } else if (orderId) {
+                displayElement.textContent = '#00' + orderId;
+            } else {
+                displayElement.textContent = '#Lỗi hiển thị';
+            }
+
+            if (orderId) {
+                document.getElementById('btn-track').href = 'theodoidonhang.php?order_id=' + orderId;
+            }
         });
+
+        // 2. Hàm đóng mở Menu trên điện thoại gốc của bạn
+        var MenuItems = document.getElementById("MenuItems");
+        if(MenuItems) {
+            MenuItems.style.maxHeight = "0px";
+        }
+        function menutoggle(){
+            if(MenuItems.style.maxHeight == "0px"){
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
     </script>
 </body>
 </html>

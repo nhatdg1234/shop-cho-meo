@@ -25,10 +25,10 @@
                 </div>
                 <nav>
                     <ul id="MenuItems">
-                        <li><a href="./home.php">Home</a> </li>
-                        <li><a href="./mua_hang.php">Hàng hóa</a> </li>
-                        <li><a href="./vechungtoi.html">Về chúng tôi</a> </li>
-                        <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/">Tài khoản</a> </li>
+                        <li><a href="./home.php" style="color: #2F6FED;">Home</a> </li>
+                        <li><a href="./mua_hang.php" style="color: #2F6FED;">Hàng hóa</a> </li>
+                        <li><a href="./vechungtoi.html" style="color: #2F6FED;">Về chúng tôi</a> </li>
+                        <li><a href="http://localhost/Login-registration-System-PHP-and-MYSQL/" style="color: #2F6FED;">Tài khoản</a> </li>
                     </ul>
                 </nav>
                 
@@ -270,6 +270,35 @@
             
             subTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
             finalTotalEl.textContent = new Intl.NumberFormat('vi-VN').format(total) + 'đ';
+        });
+    </script>
+
+    <script>
+        // Bắt sự kiện khi Form chuẩn bị submit
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 1. Tạm dừng việc tự động chuyển trang
+
+            // 2. Lấy các thẻ select Tỉnh/Quận/Phường
+            const provSelect = document.getElementById('province');
+            const distSelect = document.getElementById('district');
+            const wardSelect = document.getElementById('ward');
+
+            // 3. Lấy tên bằng CHỮ (text) thay vì lấy con số (value)
+            const provinceName = provSelect.options[provSelect.selectedIndex].text;
+            const districtName = distSelect.options[distSelect.selectedIndex].text;
+            const wardName = wardSelect.options[wardSelect.selectedIndex].text;
+
+            // 4. Gom toàn bộ dữ liệu mà khách hàng đã nhập vào form
+            const formData = new FormData(this);
+
+            // 5. Ghi đè các con số bằng Tên chữ vừa lấy được ở bước 3
+            formData.set('province', provinceName);
+            formData.set('district', districtName);
+            formData.set('ward', wardName);
+
+            // 6. Tự động nối lại thành URL và chuyển hướng sang trang thanh toán
+            const params = new URLSearchParams(formData);
+            window.location.href = 'tratien.html?' + params.toString();
         });
     </script>
 </body>
