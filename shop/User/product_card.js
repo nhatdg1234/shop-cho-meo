@@ -147,7 +147,7 @@ function initCartDrawer(){
       const itemTotal = item.price * item.qty;
       total += itemTotal;
 
-      const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
+      const imgSrc = item.image ? './anh/' + item.image : './anh/anh_logo.png';
       return (
         '<div class="cart-item" data-id="' + id + '">' +
           '<img src="' + imgSrc + '" alt="' + item.name + '">' +

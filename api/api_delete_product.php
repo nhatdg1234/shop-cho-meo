@@ -34,7 +34,7 @@ try {
 
     $stmt = $conn->prepare("DELETE FROM products WHERE id = ?");
     if ($stmt->execute([$id])) {
-        $imagePath = "../shop/anh/" . $product['image_url'];
+        $imagePath = "../shop/User/anh/" . $product['image_url'];
         if (!empty($product['image_url']) && file_exists($imagePath)) {
             @unlink($imagePath);
         }

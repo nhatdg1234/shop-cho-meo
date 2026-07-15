@@ -56,7 +56,7 @@ try {
 
         $ext = pathinfo($_FILES['image_url']['name'], PATHINFO_EXTENSION);
         $img_name = time() . '_' . bin2hex(random_bytes(4)) . ($ext ? '.' . strtolower($ext) : '');
-        $target_dir = "../shop/anh/";
+        $target_dir = "../shop/User/anh/";
 
         if (!is_dir($target_dir)) {
             mkdir($target_dir, 0777, true);

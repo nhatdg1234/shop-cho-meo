@@ -17,10 +17,10 @@
 }
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-  gap:24px;
-  max-width:1100px;
-  margin:0 auto;
+  grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:20px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* ============ PRODUCT CARD ============ */
@@ -31,6 +31,9 @@
   overflow:hidden;
   border-radius:24px;
   box-shadow:0 10px 26px rgba(60,45,20,0.08);
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
 }
 
 .product-card__media{
@@ -42,7 +45,7 @@
 }
 .product-card__media img{
   width:100%;
-  height:100%;
+  height: auto;
   object-fit:cover;
   display:block;
 }
@@ -379,5 +382,29 @@
 .btn-continue{
   background:#f3f3f3;
   color:var(--ink);
+}
+
+/* ============ RESPONSIVE DESIGN (MEDIA QUERIES) ============ */
+
+/* Màn hình Tablet hoặc khi zoom 150% */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* Màn hình Mobile (Điện thoại) hoặc khi zoom 200% trở lên */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    .product-card__title {
+        font-size: 14px !important; 
+    }
+    .product-card__price-current {
+        font-size: 16px !important;
+    }
 }
 

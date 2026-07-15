@@ -89,9 +89,23 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <option value="Mèo lai">Mèo lai</option>
                         <option value="Mèo nước ngoài">Mèo nước ngoài</option>
                     </optgroup>
+                    <optgroup label="Danh mục và Phụ kiện khác">
+                        <option value="Vật nuôi đang lớn">Vật nuôi đang lớn</option>
+                        <option value="Flash sale">Flash sale</option>
+                        <option value="Hot pet">Hot pet</option>
+                        <option value="Bộ sưu tập">Bộ sưu tập</option>
+                        <option value="Thức ăn">Thức ăn</option>
+                        <option value="Vật dụng nuôi">Vật dụng nuôi</option>
+                    </optgroup>
                 </select>
             </div>
 
+            <div class="form-group" style="background: #fff5e6; padding: 15px; border-radius: 8px; border: 1px dashed #ff8a00;">
+                <label style="display: flex; align-items: center; cursor: pointer; margin: 0; color: #d84315;">
+                    <input type="checkbox" id="is_spotlight" value="1" style="width: 20px; height: 20px; margin-right: 12px; accent-color: #ff8a00;">
+                    <span>🌟 <b>Đặt làm Offer Đặc Quyền</b> (Sẽ hiển thị to ở trang chủ + Tự động AI tách nền ảnh)</span>
+                </label>
+            </div>
             <div class="form-group">
                 <label for="price">Giá bán (VNĐ):</label>
                 <input type="number" id="price" min="0" required>
@@ -136,7 +150,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= (int)$p['id'] ?></td>
                         <td>
                             <?php if (!empty($p['image_url'])): ?>
-                                <img src="shop/anh/<?= htmlspecialchars($p['image_url']) ?>" class="product-img" alt="Ảnh sản phẩm">
+                                <img src="shop/User/anh/<?= htmlspecialchars($p['image_url']) ?>" class="product-img" alt="Ảnh sản phẩm">
                             <?php else: ?>
                                 Trống
                             <?php endif; ?>
@@ -187,6 +201,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         formData.append('stock_quantity', document.getElementById('stock_quantity').value);
         formData.append('description', document.getElementById('description').value.trim());
         formData.append('image_url', imageInput.files[0]);
+        
+        // CHÈN THÊM 1 DÒNG NÀY ĐỂ BẮT GIÁ TRỊ CHECKBOX:
+        formData.append('is_spotlight', document.getElementById('is_spotlight').checked ? '1' : '0');
 
         fetch('api/api_add_product.php', {
             method: 'POST',
@@ -242,6 +259,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="hidden" id="edit_id">
             
             <div class="form-group"><label>Tên:</label><input type="text" id="edit_product_name" required></div>
+            
             <div class="form-group"><label>Phân loại:</label>
                 <select id="edit_category" required>
                     <option value="">-- Chọn danh mục --</option>
@@ -256,6 +274,14 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <option value="Mèo đen">Mèo đen</option>
                         <option value="Mèo lai">Mèo lai</option>
                         <option value="Mèo nước ngoài">Mèo nước ngoài</option>
+                    </optgroup>
+                    <optgroup label="Danh mục và Phụ kiện khác">
+                        <option value="Vật nuôi đang lớn">Vật nuôi đang lớn</option>
+                        <option value="Flash sale">Flash sale</option>
+                        <option value="Hot pet">Hot pet</option>
+                        <option value="Bộ sưu tập">Bộ sưu tập</option>
+                        <option value="Thức ăn">Thức ăn</option>
+                        <option value="Vật dụng nuôi">Vật dụng nuôi</option>
                     </optgroup>
                 </select>
             </div>

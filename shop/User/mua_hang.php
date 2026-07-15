@@ -50,12 +50,13 @@
                     <i class="fa-solid fa-chevron-down fa-chevron"></i>
                 </button>
                 <ul class="left-menu-item">
-                    <li><a href="cartegory.html">Giống mới về</a></li>
-                    <li><a href="cartegory.html">Giống lớn</a></li>
-                    <li><a href="cartegory.html">Chó Shiba</a></li>
-                    <li><a href="cartegory.html">Chó phoc</a></li>
+                    <li><a href="mua_hang.php?category=Chó - Giống mới về">Giống mới về</a></li>
+                    <li><a href="mua_hang.php?category=Chó - Giống lớn">Giống lớn</a></li>
+                    <li><a href="mua_hang.php?category=Chó Shiba">Chó Shiba</a></li>
+                    <li><a href="mua_hang.php?category=Chó Phốc">Chó Phốc</a></li>
                 </ul>
             </li>
+
             <li class="menu-parent">
                 <button type="button" class="menu-parent__title" aria-expanded="false">
                     <i class="fa-solid fa-cat fa-icon"></i>
@@ -63,18 +64,19 @@
                     <i class="fa-solid fa-chevron-down fa-chevron"></i>
                 </button>
                 <ul class="left-menu-item">
-                    <li><a href="cartegory.html">Giống mới về</a></li>
-                    <li><a href="cartegory.html">Mèo đen</a></li>
-                    <li><a href="cartegory.html">Mèo lai</a></li>
-                    <li><a href="cartegory.html">Mèo nước ngoài</a></li>
+                    <li><a href="mua_hang.php?category=Mèo - Giống mới về">Giống mới về</a></li>
+                    <li><a href="mua_hang.php?category=Mèo đen">Mèo đen</a></li>
+                    <li><a href="mua_hang.php?category=Mèo lai">Mèo lai</a></li>
+                    <li><a href="mua_hang.php?category=Mèo nước ngoài">Mèo nước ngoài</a></li>
                 </ul>
             </li>
-            <li><a class="menu-single" href="#"><i class="fa-solid fa-seedling"></i> Vật nuôi đang lớn</a></li>
-            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-bolt"></i> Flash sale</a></li>
-            <li><a class="menu-single accent" href="#"><i class="fa-solid fa-fire"></i> Hot pet</a></li>
-            <li><a class="menu-single" href="#"><i class="fa-solid fa-layer-group"></i> Bộ sưu tập</a></li>
-            <li><a class="menu-single" href="#"><i class="fa-solid fa-bowl-food"></i> Thức ăn</a></li>
-            <li><a class="menu-single" href="#"><i class="fa-solid fa-suitcase-medical"></i> Vật dụng nuôi</a></li>
+
+            <li><a class="menu-single" href="mua_hang.php?category=Vật nuôi đang lớn"><i class="fa-solid fa-seedling"></i> Vật nuôi đang lớn</a></li>
+            <li><a class="menu-single accent" href="mua_hang.php?category=Flash sale"><i class="fa-solid fa-bolt"></i> Flash sale</a></li>
+            <li><a class="menu-single accent" href="mua_hang.php?category=Hot pet"><i class="fa-solid fa-fire"></i> Hot pet</a></li>
+            <li><a class="menu-single" href="mua_hang.php?category=Bộ sưu tập"><i class="fa-solid fa-layer-group"></i> Bộ sưu tập</a></li>
+            <li><a class="menu-single" href="mua_hang.php?category=Thức ăn"><i class="fa-solid fa-bowl-food"></i> Thức ăn</a></li>
+            <li><a class="menu-single" href="mua_hang.php?category=Vật dụng nuôi"><i class="fa-solid fa-suitcase-medical"></i> Vật dụng nuôi</a></li>
         </ul>
     </aside>
 
@@ -105,23 +107,41 @@
 
         <div class="grid">
 <?php
-// 1. Cần lùi 2 cấp (../../) để ra thư mục gốc gọi đúng file db_conn.php của dự án
+// 1. Kết nối CSDL thông qua đường dẫn chính xác của dự án
 require_once '../../db_conn.php'; 
 
 try {
-    // 2. Sử dụng PDO truy vấn đồng bộ với toàn bộ hệ thống
-    $stmt = $conn->query("SELECT * FROM products ORDER BY id DESC");
+    $filter_title = "Tất cả sản phẩm";
+    $params = [];
+    
+    // Câu truy vấn mặc định lấy toàn bộ sản phẩm
+    $sql = "SELECT * FROM products";
+
+    // 2. Chỉ thực hiện lọc chính xác khi có tham số 'category' truyền lên URL
+    if (isset($_GET['category']) && !empty(trim($_GET['category']))) {
+        $category = trim($_GET['category']);
+        $sql .= " WHERE category = :category";
+        $params[':category'] = $category;
+        $filter_title = "Danh mục: " . htmlspecialchars($category);
+    }
+
+    $sql .= " ORDER BY id DESC";
+
+    // 3. Thực thi câu lệnh SQL bằng PDO
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
     $products = $stmt->fetchAll();
+
+    // Hiển thị tiêu đề danh mục hiện tại để người dùng dễ nhận biết
+    // echo "<h2 style='width:100%; text-align:left; margin-bottom: 20px; color:#ff8a00; font-size:1.4rem; font-weight:700;'>" . $filter_title . "</h2>";
 
     if (count($products) > 0) {
         foreach ($products as $row) {
-            // Định dạng giá tiền chuẩn VNĐ
             $formatted_price = number_format($row['price'], 0, ',', '.');
 ?>
             <article class="product-card" data-id="<?= $row['id'] ?>" data-name="<?= htmlspecialchars($row['product_name']) ?>" data-price="<?= $row['price'] ?>" data-image="<?= htmlspecialchars($row['image_url']) ?>">
                 <div class="product-card__media">
                     <button class="product-card__fav" aria-label="Yêu thích">♥</button>
-                    
                     <img src="../anh/<?= htmlspecialchars($row['image_url']) ?>" alt="<?= htmlspecialchars($row['product_name']) ?>">
                 </div>
                 <div class="product-card__body">
@@ -136,10 +156,9 @@ try {
 <?php
         }
     } else {
-        echo "<p style='text-align:center; width:100%; color:#666;'>Hiện tại cửa hàng chưa có thú cưng hoặc sản phẩm nào.</p>";
+        echo "<p style='text-align:center; width:100%; color:#666; padding: 40px 0;'>Không tìm thấy sản phẩm nào thuộc danh mục này.</p>";
     }
 } catch (PDOException $e) {
-    // Hỗ trợ kiểm tra lỗi nếu kết nối hoặc câu lệnh SQL có vấn đề
     echo "<p style='text-align:center; width:100%; color:red;'>Lỗi hệ thống: Không thể tải danh sách sản phẩm.</p>";
 }
 ?>

@@ -127,7 +127,7 @@ try {
             </div>
             <div class="flex items-center gap-3">
                 <span class="text-sm text-gray-500">Xin chào, <strong class="text-orange-500">Quản lý viên</strong></span>
-                <a href="home.php" class="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-all">Quay lại Website</a>
+                <a href="./shop/User/home.php" class="text-xs text-gray-400 hover:text-gray-600 border border-gray-200 rounded-lg px-3 py-1.5 transition-all">Quay lại Website</a>
             </div>
         </div>
     </header>

@@ -252,7 +252,7 @@
             Object.keys(cart).forEach((id, index) => {
                 const item = cart[id];
                 total += item.price * item.qty;
-                const imgSrc = item.image ? '../anh/' + item.image : '../anh/anh_logo.png';
+                const imgSrc = item.image ? './anh/' + item.image : './anh/anh_logo.png';
                 const pastelBg = index % 2 === 0 ? 'bg-[#FFE7E7]' : 'bg-[#FFF1B8]';
                 
                 sidebarItemsList.innerHTML += `
